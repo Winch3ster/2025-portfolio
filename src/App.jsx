@@ -1,3 +1,4 @@
+import { Home_scene } from './assets/model_components/home_scene.jsx';
 import HomePage from './pages/home.jsx';
 
 function App() {

@@ -9,14 +9,16 @@
 const ExploreGithubSection = () => {
 
     return (
-        <div class="absolute right-0 bottom-0 h- mr-30 mb-30">
-            <div class="text-end">Interested?</div>
+        <div class="absolute z-20 right-0 bottom-0 mr-20 mb-15 py-10 px-5">
+            <div class="text-end">One creation at a time</div>
             
             <div class="pt-0.5">
-                <p class="text-2xl">Explore My Work on GitHub</p>
+                <p class="text-4xl text-end font-normal text-gray-950">Turning Ideas into Reality<br></br>Software, Art & Simulations</p>
                 
                 <div class="flex justify-end">
-                <button type="button" class="text-black bg-transparent border-2 border-black focus:outline-none hover:bg-black hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-10 py-5 me-2 mb-2 mt-3 cursor-pointer">Explore</button>
+                <button type="button" class="standard-button text-black bg-transparent border-2 border-black focus:outline-none hover:bg-black hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-10 py-3 me-2 mb-2 mt-3 mr-8 cursor-pointer">Github</button>
+            
+                <button type="button" class="standard-button text-black bg-transparent border-2 border-black focus:outline-none hover:bg-black hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-10 py-3 me-2 mb-2 mt-3 cursor-pointer">Resume</button>
 
                 </div>
 

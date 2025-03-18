@@ -2,14 +2,13 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {  OrbitControls, PerspectiveCamera, } from "@react-three/drei"
 import { Home_scene } from "../assets/model_components/home_scene";
 import { Suspense, useState } from "react";
-import NavigationBar from "../assets/UI_components/navigation_bar"
+import SimulationNav from "../assets/UI_components/simulation_navigation_bar"
 import { Vector3 } from "three";
 import ExploreGithubSection from "../assets/UI_components/visit_my_github";
 import InteractableIndicator from "../assets/UI_components/interactable_indicator";
 import { EffectComposer,  Bloom, Vignette, Glitch } from '@react-three/postprocessing'
 import {GlitchMode } from 'postprocessing'
-import HomepageOverlay from "../assets/UI_components/homepage_overlay";
-import MouseHelper from "../assets/UI_components/mouse_helper";
+import SimulationPageOverlay from "../assets/UI_components/homepage_overlay";
 
 
 function Rig() {
@@ -54,7 +53,7 @@ function Rig() {
 
 
 
-function HomePage() {
+function SimulationPage() {
 
     //Entry point of the app 
   
@@ -68,17 +67,15 @@ function HomePage() {
 
   
 
-  const lookAtCoordinate = [1.5, 0.6, -3.8]//[0, 0.3, -2]; // Target position
+  const lookAtCoordinate = [1, 0.6, -3.8]//[0, 0.3, -2]; // Target position
 
 
     return (
       <div className='w-full h-screen overflow-hidden'>
-      <NavigationBar isOpen={true}></NavigationBar>
-        <Canvas
-        
-        className="w-full h-screen z-0 relative overflow-hidden"
+      <SimulationPageOverlay></SimulationPageOverlay>
+        <Canvas 
+        className="w-full h-screen z-0 relative overflow-x-hidden"
         linear={true}
-        
         >
       
 
@@ -104,7 +101,7 @@ function HomePage() {
   
 
         
-          <PerspectiveCamera  makeDefault position={[-2.7, 0.6, 3.3]} fov={32} onUpdate={(self) => self.lookAt(...lookAtCoordinate)}> </PerspectiveCamera>
+          <PerspectiveCamera  makeDefault position={[-2.5, 0.6, 3.3]} fov={32} onUpdate={(self) => self.lookAt(...lookAtCoordinate)}> </PerspectiveCamera>
 
 
           <Rig></Rig>
@@ -118,11 +115,8 @@ function HomePage() {
               active // turn on/off the effect (switches between "mode" prop and GlitchMode.DISABLED)
               ratio={0.25} // Threshold for strong glitches, 0 - no weak glitches, 1 - no strong glitches.
             />
-
-
-
             <Bloom luminanceThreshold={0} luminanceSmoothing={0.6} height={100} intensity={0.4} />
-            <Vignette eskil={false} offset={0.1} darkness={0.4} />
+            <Vignette eskil={false} offset={0.1} darkness={0.8} />
           </EffectComposer>
 
 
@@ -130,7 +124,6 @@ function HomePage() {
 
 
         </Canvas>
-        <ExploreGithubSection></ExploreGithubSection>
 
     
 
@@ -140,7 +133,7 @@ function HomePage() {
     )
   }
   
-  export default HomePage
+  export default SimulationPage
   
   /*
 

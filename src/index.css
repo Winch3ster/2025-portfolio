@@ -26,6 +26,11 @@ body{
 
 }
 
+.standard-small-text-size{
+  font-size: 11px;
+}
+
+
 .individual-icon{
   height: 30px;
   width: auto;
@@ -53,18 +58,15 @@ body{
 }
 
 .open-nav-btn{
-  height: 70px;
+  height: 120px;
+  width: 40px;
   border-radius: 25px;
-  background-color: rgba(112, 112, 112, 0.496);
-
+  background-color: rgba(246, 247, 249, 0.734);
+  cursor: pointer;
   transition-duration: 0.4s;
 }
 
-.open-nav-btn:hover{
-  background-color: rgba(49, 49, 49, 0.918);
 
-  cursor: pointer;
-}
 
 
 .indicator-outer-layer{
@@ -306,4 +308,22 @@ body{
   transform: rotate(-45deg);
   margin-bottom: 1px;
   transition: 0.25s;
+}
+
+
+
+
+
+.simulation-hamburger-menu{
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.103);
+  backdrop-filter: blur(8px); 
+  cursor: pointer;
+  transition: 0.3s;
+}
+.simulation-hamburger-menu:hover{
+  transform: scale(1.15);
 }

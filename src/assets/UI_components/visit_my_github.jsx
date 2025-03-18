@@ -5,26 +5,22 @@
  this section will close with animation
 */
 
+import textBundle from "../../msgbundle";
 
-const ExploreGithubSection = () => {
+
+const SimulationTitle = () => {
 
     return (
-        <div class="absolute z-20 right-0 bottom-0 mr-20 mb-15 py-10 px-5">
-            <div class="text-end">One creation at a time</div>
+        <div class="absolute z-20 left-20 bottom-0 mr-20 mb-20 py-10 px-5 w-1/3">
+            <div class="text-start text-white tracking-wide">{textBundle["simulation.page.subtitle"]}</div>
             
-            <div class="pt-0.5">
-                <p class="text-4xl text-end font-normal text-gray-950">Turning Ideas into Reality<br></br>Software, Art & Simulations</p>
-                
-                <div class="flex justify-end">
-                <button type="button" class="standard-button text-black bg-transparent border-2 border-black focus:outline-none hover:bg-black hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-10 py-3 me-2 mb-2 mt-3 mr-8 cursor-pointer">Github</button>
-            
-                <button type="button" class="standard-button text-black bg-transparent border-2 border-black focus:outline-none hover:bg-black hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-10 py-3 me-2 mb-2 mt-3 cursor-pointer">Resume</button>
+            <div class="h-1"></div>
+                <p class="text-4xl text-start font-normal text-white tracking-wider">{textBundle["simualtion.page.title.1"]}<br></br>{textBundle["simualtion.page.title.2"]}</p>
+          
 
-                </div>
-
-            </div>
            
-                
+            <div class="h-4"></div>
+            <div  class="text-start text-white tracking-wide">{textBundle["simulation.page.description"]}</div>                
         
         </div>
 
@@ -34,4 +30,4 @@ const ExploreGithubSection = () => {
 }
 
 
-export default ExploreGithubSection;
+export default SimulationTitle;

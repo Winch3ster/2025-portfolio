@@ -5,10 +5,15 @@ import AvailabilityIndicator from './availability_indicator';
 import emailLogo from '../icons/mail.png'
 import instagramLogo from '../icons/instagram.png'
 import linkedin from '../icons/linkedin.png'
-
+import githubLogo from '../icons/github.png'
+import hamburgerMenu from '../icons/hamburger_menu.png'
 import backButton from '../icons/left-chevron.png'
 import openNavButton from '../icons/right-chevron.png'
-const NavigationBar = ({isOpen}) => {
+import { useEffect, useState } from 'react';
+
+
+
+const SimulationNav = ({isOpen}) => {
     //This is for the navigation
 
     //Name, status --> looking for job, employed, unavailable, social media links 
@@ -16,17 +21,21 @@ const NavigationBar = ({isOpen}) => {
     //Green --> looking for job
     //Gray --> unavailable
 
+    const [contactDetailsIsOpened, setContactDetailsState] = useState(false);
 
-    if(isOpen){
+
+
+
+    if(contactDetailsIsOpened){
         return(
 
 
-            <div class="absolute top-1/3 z-10 py-16 items-center justify-between">
+            <div class="absolute right-20 top-1/4 z-20 py-16 items-center justify-between">
     
     
     
     
-                <div class=" w-full h-full z-10 py-12 items-center justify-between pl-10 pr-5 bg-white rounded-r-lg">
+                <div className='standard-dark-gray' class=" w-full h-full z-20 py-12 items-center justify-between bg-white pl-10 pr-5 rounded-lg">
                     <div class="flex items-center">
     
                         <div>
@@ -45,13 +54,13 @@ const NavigationBar = ({isOpen}) => {
                                 <img className="individual-icon" src={emailLogo} alt="" />
                                 <img className="individual-icon" src={instagramLogo} alt="" />
                                 <img className="individual-icon" src={linkedin} alt="" />
-                                
+                                <img className="individual-icon" src={githubLogo} alt="" />
+
                             </div>
                         </div>
     
-                        <div class="pl-20 ">
-                            <img className="individual-icon" src={backButton} alt="" />
-    
+                        <div class="pl-20 cursor-pointer" onClick={() =>  setContactDetailsState(!contactDetailsIsOpened)}>
+                            <img className="open-nav-btn-icon" src={backButton} alt="" />
                         </div>
     
     
@@ -74,15 +83,23 @@ const NavigationBar = ({isOpen}) => {
            
 
 
-            <div class="absolute z-10 left-8 top-0 w-20  h-full">
-                <div class="w-full h-full flex items-center">
-                    
-                    <div className='open-nav-btn flex items-center justify-center'>
-                        <img className="open-nav-btn-icon animate-pulse" src={backButton} alt="" />
+            <div class="absolute z-20 right-5 top-0 w-15  h-full opacity-70">
+               <div class="h-2/5 items-center justify-center flex">
+                  <div class="bg-white w-0.5 h-full"></div>
+               </div>
 
-                    </div>
+               <div class="h-1/5 items-center justify-center flex">
+                  <div className="simulation-hamburger-menu flex justify-center items-center" >
+                    <img class="h-5 w-5" src={hamburgerMenu} alt="" />
+                  </div>
+               </div>
 
-                </div>
+               <div class="h-2/5 items-center justify-center flex">
+                  <div class="bg-white w-0.5 h-full"></div>
+               </div>
+
+
+               
             </div>
         )
     }
@@ -93,10 +110,20 @@ const NavigationBar = ({isOpen}) => {
 }
 
 
-export default NavigationBar
+export default SimulationNav;
 
 
 /*
+
+ <div class="w-full h-full flex items-center">
+                    
+                    <div className='open-nav-btn flex items-center justify-center' onClick={() =>  setContactDetailsState(!contactDetailsIsOpened)}>
+
+                    </div>
+
+                </div>
+
+
 
 
  <div class="absolute z-10 ml-20 items-center justify-between bg-amber-200">

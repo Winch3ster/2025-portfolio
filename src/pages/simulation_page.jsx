@@ -2,52 +2,30 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {  OrbitControls, PerspectiveCamera, } from "@react-three/drei"
 import { Home_scene } from "../assets/model_components/home_scene";
 import { Suspense, useState } from "react";
-import SimulationNav from "../assets/UI_components/simulation_navigation_bar"
 import { Vector3 } from "three";
-import ExploreGithubSection from "../assets/UI_components/visit_my_github";
 import InteractableIndicator from "../assets/UI_components/interactable_indicator";
 import { EffectComposer,  Bloom, Vignette, Glitch } from '@react-three/postprocessing'
 import {GlitchMode } from 'postprocessing'
-import SimulationPageOverlay from "../assets/UI_components/homepage_overlay";
+import SimulationPageOverlay from "../assets/UI_components/simulation_page_overlay";
 
 
 function Rig() {
+  
   const [vec] = useState(() => new Vector3)
+
+  
+
   const { camera, mouse } = useThree()
-  
-  /*useFrame(() => {
-
-    const xShakeFactorTreshold = 0.25;
-    const yShakeFactorTreshold = 0.1;
+  const defaultCameraPosition =camera.position;
+  vec.set(defaultCameraPosition);
 
 
-    let xShakeFactor = mouse.x;
-    let yShakeFactor = mouse.y;
-
-    if(xShakeFactor > xShakeFactorTreshold){
-      xShakeFactor = xShakeFactorTreshold;
-    }else if(xShakeFactor < xShakeFactorTreshold){
-      xShakeFactor = -xShakeFactorTreshold;
-    }else{
-      xShakeFactor = mouse.x
-    }
-
-    if(yShakeFactor > yShakeFactorTreshold){
-      yShakeFactor = yShakeFactorTreshold;
-    }else if(yShakeFactor < -yShakeFactorTreshold){
-      yShakeFactor = -yShakeFactorTreshold;
-    }else{
-      yShakeFactor = mouse.y
-    }
-
-    camera.position.lerp(vec.set(xShakeFactor + -2.8,  yShakeFactor+0.2, 3.5), 0.015)
-  
-  })*/
-
-
-
-
-  //return <CameraShake maxYaw={0.01} maxPitch={0.01} maxRoll={0.01} yawFrequency={0.5} pitchFrequency={0.5} rollFrequency={0.4} />
+ useFrame(() => {
+    const xOffset = mouse.x * 0.3;
+    const yOffset = mouse.y*0.2;
+    camera.position.lerp(vec.set(-2.5 + xOffset, 0 + yOffset, 3.3 + xOffset), 0.05)
+    camera.lookAt(...[1 , 0.6 , -3.8 ]);
+  })  
 }
 
 
@@ -55,19 +33,9 @@ function Rig() {
 
 function SimulationPage() {
 
-    //Entry point of the app 
-  
-    // Architecture 
-    
-    /*
-        - scene 
-            - Lighting and ambience
-            - Models 
-    */
+   
 
-  
-
-  const lookAtCoordinate = [1, 0.6, -3.8]//[0, 0.3, -2]; // Target position
+  const lookAtCoordinate = [1, 0.6, -3.8]
 
 
     return (
@@ -101,24 +69,18 @@ function SimulationPage() {
   
 
         
-          <PerspectiveCamera  makeDefault position={[-2.5, 0.6, 3.3]} fov={32} onUpdate={(self) => self.lookAt(...lookAtCoordinate)}> </PerspectiveCamera>
+          <PerspectiveCamera  makeDefault position={[-2.5, 0, 3.3]} fov={32} onUpdate={(self) => self.lookAt(...lookAtCoordinate)}> </PerspectiveCamera>
 
 
-          <Rig></Rig>
 
-          <EffectComposer>
-            <Glitch
-              delay={[1.5, 13.5]} // min and max glitch delay
-              duration={[0.6, 1.0]} // min and max glitch duration
-              strength={[0.005, 0.01]} // min and max glitch strength
-              mode={GlitchMode.SPORADIC} // glitch mode
-              active // turn on/off the effect (switches between "mode" prop and GlitchMode.DISABLED)
-              ratio={0.25} // Threshold for strong glitches, 0 - no weak glitches, 1 - no strong glitches.
-            />
-            <Bloom luminanceThreshold={0} luminanceSmoothing={0.6} height={100} intensity={0.4} />
-            <Vignette eskil={false} offset={0.1} darkness={0.8} />
-          </EffectComposer>
 
+
+
+          /* 
+              The effectcomposer component may cause performance issue
+              */
+             
+        <Rig></Rig>
 
         </Suspense>
 
@@ -136,6 +98,78 @@ function SimulationPage() {
   export default SimulationPage
   
   /*
+
+
+
+
+
+
+
+
+   <EffectComposer>
+           
+           <Glitch
+               delay={[1.5, 13.5]} // min and max glitch delay
+               duration={[0.6, 1.0]} // min and max glitch duration
+               strength={[0.005, 0.01]} // min and max glitch strength
+               mode={GlitchMode.SPORADIC} // glitch mode
+               active // turn on/off the effect (switches between "mode" prop and GlitchMode.DISABLED)
+               ratio={0.25} // Threshold for strong glitches, 0 - no weak glitches, 1 - no strong glitches.
+             />
+           <Bloom luminanceThreshold={0} luminanceSmoothing={0.6} height={100} intensity={0.2} />
+ 
+           <Vignette eskil={false} offset={.1} darkness={0.8} />
+ 
+           </EffectComposer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+<EffectComposer>
+           
+          <Glitch
+              delay={[1.5, 13.5]} // min and max glitch delay
+              duration={[0.6, 1.0]} // min and max glitch duration
+              strength={[0.005, 0.01]} // min and max glitch strength
+              mode={GlitchMode.SPORADIC} // glitch mode
+              active // turn on/off the effect (switches between "mode" prop and GlitchMode.DISABLED)
+              ratio={0.25} // Threshold for strong glitches, 0 - no weak glitches, 1 - no strong glitches.
+            />
+          <Bloom luminanceThreshold={0} luminanceSmoothing={0.6} height={100} intensity={0.2} />
+
+          <Vignette eskil={false} offset={.1} darkness={0.8} />
+
+          </EffectComposer>
+
+
+
+
+
+<Glitch
+              delay={[1.5, 13.5]} // min and max glitch delay
+              duration={[0.6, 1.0]} // min and max glitch duration
+              strength={[0.005, 0.01]} // min and max glitch strength
+              mode={GlitchMode.SPORADIC} // glitch mode
+              active // turn on/off the effect (switches between "mode" prop and GlitchMode.DISABLED)
+              ratio={0.25} // Threshold for strong glitches, 0 - no weak glitches, 1 - no strong glitches.
+            />
+            <Bloom luminanceThreshold={0} luminanceSmoothing={0.6} height={100} intensity={0.4} />
+            <Vignette eskil={false} offset={0.1} darkness={0.8} />
+
+
+
+
+
 
 
 

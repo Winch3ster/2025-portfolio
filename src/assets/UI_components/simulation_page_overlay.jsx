@@ -6,10 +6,7 @@ const SimulationPageOverlay = () => {
 
     return(
         <>
-            <div class="absolute top-5 left-20 z-20">
-
-                <p class="standard-small-text-size text-white tracking-[.25em] opacity-80">{textBundle["simulation.page.featuring"]}</p>
-            </div>
+        
 
             <SimulationNav></SimulationNav>
 

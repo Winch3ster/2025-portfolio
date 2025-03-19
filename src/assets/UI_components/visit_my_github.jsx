@@ -15,7 +15,7 @@ const SimulationTitle = () => {
             <div class="text-start text-white tracking-wide">{textBundle["simulation.page.subtitle"]}</div>
             
             <div class="h-1"></div>
-                <p class="text-4xl text-start font-normal text-white tracking-wider">{textBundle["simualtion.page.title.1"]}<br></br>{textBundle["simualtion.page.title.2"]}</p>
+                <p class="text-3xl text-start font-normal text-white tracking-wider">{textBundle["simualtion.page.title.1"]}<br></br>{textBundle["simualtion.page.title.2"]}</p>
           
 
            

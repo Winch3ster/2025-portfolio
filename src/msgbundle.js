@@ -10,8 +10,17 @@ const textBundle = {
     "simulation.page.subtitle":"One creation at a time",
     "simualtion.page.title.1":"Turning Ideas into Reality - ",
     "simualtion.page.title.2":"Software, Art & Simulations",
-    "simulation.page.description" :"Welcome to the simulation - Explore my projects and learn more about  who am I."
-  
+    "simulation.page.description" :"Welcome to the simulation - Explore my projects and learn more about  who am I.",
+    "about.me.panel.age": "Age: 23",
+    "about.me.panel.name": "Kingston Lee Yu Le",
+    "about.me.panel.based": "Malaysia",
+    "about.me.panel.description": "Hi! Thanks for visiting my portfolio website. I'm Kingston—a Computer Science graduate from Anglia Ruskin University with a passion for software development and continuous learning.", 
+    "about.me.panel.description.2": "Beyond coding, I enjoy exploring my favourite subjects like physics, evolutionary biology, and conflict history. Artistically, I also have a passion for 3D modeling, animation, miniature art abd playing guitar.",
+    "common.github.button.text": "</Github>",
+    "common.instagram": "Instagram",
+    "common.back": "Back",
+    "my.projects": "My Projects",
+    "attached.company":"Attached Company: ",
   };
 
 

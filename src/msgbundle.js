@@ -22,6 +22,7 @@ const textBundle = {
     "common.back": "Back",
     "my.projects": "My Projects",
     "attached.company":"Attached Company: ",
+    "model.created.in.blender":"Model and scene created in Blender",
   };
 
 

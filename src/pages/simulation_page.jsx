@@ -137,7 +137,7 @@ function SimulationPage() {
 
           <Rig></Rig>
 
-          <InteractableIndicator position={[-1.3, 0.5, -1.7]} onclickCallBack={() => interactableClicked("project")}></InteractableIndicator>
+          <InteractableIndicator position={[-1.3, 0.6, -1.7]} onclickCallBack={() => interactableClicked("project")}></InteractableIndicator>
           <InteractableIndicator position={[-0.5, -0.3, 0.2]} onclickCallBack={() => interactableClicked("about")}></InteractableIndicator>
 
         </Suspense>

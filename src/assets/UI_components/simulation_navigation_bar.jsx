@@ -13,14 +13,16 @@ import { useContext, useState } from 'react'
 import { simulationContext } from '../../context'
 
 const QuickNavComponent = ({marginX, marginY, content, link, specialEffectCallback}) => {
+        console.log(specialEffectCallback)
     
-    return(
+
+        return(
         
         <div >
             
-            <div class={`${marginX} ${marginY} quick-nav-comp-effect w-16 h-16 rounded-4xl flex justify-center items-center quick-nav-component-container`}>
+            <div class={`${marginX} ${marginY}  quick-nav-comp-effect w-16 h-16 rounded-4xl flex justify-center items-center quick-nav-component-container ${specialEffectCallback ?  !specialEffectCallback[1] && " enable-special-effect-off" : ""}`}>
                 
-                <div class='bg-white w-12 h-12 flex rounded-4xl justify-center items-center' onClick={() => specialEffectCallback()} >
+                <div class={`bg-white w-12 h-12 flex rounded-4xl justify-center items-center ${specialEffectCallback ?  !specialEffectCallback[1] && " enable-special-effect-off" : ""} `} onClick={() =>  specialEffectCallback[0]()}> 
 
                     {specialEffectCallback ?
                         <img className="quick-nav-component-content" src={content} alt="" />
@@ -37,7 +39,7 @@ const QuickNavComponent = ({marginX, marginY, content, link, specialEffectCallba
        
     )
 }
-
+// ${specialEffectCallback.enableSpecialEffect && " enable-special-effect-off"}   onClick={() => specialEffectCallback.toggleSpecialEffectHelper()}
 
 
 const QuickNavigation = ({navIsOpen}) => {

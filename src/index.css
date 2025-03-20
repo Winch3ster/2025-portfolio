@@ -362,6 +362,14 @@ body{
 
 }
 
+.enable-special-effect-off{
+  background-color: rgb(72, 72, 72);
+}
+
+.enable-special-effect-off:hover{
+  border: 3px solid rgb(72, 72, 72);
+}
+
 
 .quick-navigation-open-animation{
   transition: 0.4s;

@@ -88,7 +88,7 @@ function SimulationPage() {
     }
 
     return (
-      <simulationContext.Provider value={toggleSpecialEffectHelper}>
+      <simulationContext.Provider value={[toggleSpecialEffectHelper, enableSpecialEffect]}>
         <div className='w-full h-screen overflow-hidden'>
         <SimulationPageOverlay></SimulationPageOverlay>
           

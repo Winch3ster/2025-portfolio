@@ -44,11 +44,9 @@ const MyProjectsPanel = () => {
 
       };
       
-
     return(
 
-        <div class="about-me-panel-config md:w-3/4 md:h-3/4 w-full h-9/12 rounded-2xl pt-5">
-            
+        <div class="about-me-panel-config md:w-3/4 md:h-3/4 w-full h-9/12 rounded-2xl pt-5">   
             <div class='pl-10 flex items-center' >
                 <img class='h-4 w-4'  src={leftChevron} alt="" />
                 <div>{textBundle["common.back"]}</div>

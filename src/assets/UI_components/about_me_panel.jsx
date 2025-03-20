@@ -1,6 +1,6 @@
 import textBundle from "../../msgbundle";
 import leftChevron from '../icons/left-chevron.png'
-
+import profile from '../profile.png'
 
 const AboutMePanel = () => {
 
@@ -19,8 +19,8 @@ const AboutMePanel = () => {
                 <div class="flex justify-center items-center">
 
                     <div class="-mt-5">
-                        <div class=" bg-gray-500 profile-pic-container">
-                            <img src="" alt="" />
+                        <div class="  profile-pic-container">
+                            <img src={profile} alt="" />
                         </div>
                         <div class="h-5"></div>
                         <div class='ml-1'>
@@ -41,6 +41,8 @@ const AboutMePanel = () => {
                         <p>{textBundle["about.me.panel.description"]}</p>
                         <br></br>
                         <p>{textBundle["about.me.panel.description.2"]}</p>
+                        <br></br>
+                        <p class='font-bold'>{textBundle["about.me.panel.ps"]}</p>
                         <div class="h-5"></div>
 
                         <div class="flex">

@@ -1,44 +1,119 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {  OrbitControls, PerspectiveCamera, } from "@react-three/drei"
 import { Home_scene } from "../assets/model_components/home_scene";
-import { Suspense, useState } from "react";
-import { Vector3 } from "three";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { MathUtils, Vector3 } from "three";
 import InteractableIndicator from "../assets/UI_components/interactable_indicator";
 import { EffectComposer,  Bloom, Vignette, Glitch } from '@react-three/postprocessing'
 import {GlitchMode } from 'postprocessing'
 import SimulationPageOverlay from "../assets/UI_components/simulation_page_overlay";
+import AboutMePanel from "../assets/UI_components/about_me_panel";
+import MyProjectsPanel from "../assets/UI_components/my_projects_panel";
+import { AnimatePresence, motion } from "motion/react";
 
+
+const CAMERA_POSITION = [-2.5, 0, 3.3];
+const LOOK_AT_COORDINATE = [1.3, 0.6, -3.8];
 
 function Rig() {
-  
-  const [vec] = useState(() => new Vector3)
 
-  
+  const { camera } = useThree()
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
-  const { camera, mouse } = useThree()
-  const defaultCameraPosition =camera.position;
-  vec.set(defaultCameraPosition);
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      const x = (event.clientX / window.innerWidth) * 2 - 1;
+      const y = -(event.clientY / window.innerHeight) * 2 + 1;
+      setMouse({ x, y });
+
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
 
- useFrame(() => {
+  useFrame(() => {
     const xOffset = mouse.x * 0.3;
-    const yOffset = mouse.y*0.2;
-    camera.position.lerp(vec.set(-2.5 + xOffset, 0 + yOffset, 3.3 + xOffset), 0.05)
-    camera.lookAt(...[1 , 0.6 , -3.8 ]);
-  })  
+    const yOffset =  mouse.y*0.2;
+
+    const newPosition = new Vector3(-2.5 + xOffset, 0 + yOffset, 3.3 + xOffset);
+    camera.position.lerp(newPosition, 0.05)
+    camera.lookAt(1.3, 0.6, -3.8);
+
+  })
 }
+
 
 
 function SimulationPage() {
 
-   
+    const [currentActivatedPanel, setCurrentActivatedPanel] = useState("none");
 
-  const lookAtCoordinate = [1, 0.6, -3.8]
+    //[My Projects] Play the project picture slide's entrance animation AFTER parent component's animation finishes 
+    const [isProjectPanelParentAnimationDone, setIsProjectPanelParentAnimationDone] = useState(false);
+
+    //"about" --> about me
+    //"project" --> my projects
+
+    const interactableClicked = (panel) =>{
+      console.log("interactableClicked is clicked: " +panel)
+      switch(panel) {
+        case "about":
+          //open about me panel  
+          setCurrentActivatedPanel("about");
+          break;
+        case "project":
+          setCurrentActivatedPanel("project");
+          setIsProjectPanelParentAnimationDone(false);
+          break;
+        default:
+          //open my work panel
+          setCurrentActivatedPanel("none");
+      }
+    }
+
+    const closePanel = () =>{
+      setCurrentActivatedPanel("none");
+      setIsProjectPanelParentAnimationDone(false);
+    }
 
 
     return (
       <div className='w-full h-screen overflow-hidden'>
       <SimulationPageOverlay></SimulationPageOverlay>
+        
+      
+        <AnimatePresence>
+          {currentActivatedPanel == "about" && 
+            <motion.div
+            initial={{ x: -200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -200, opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            class='z-30 absolute w-full h-full overflow-hidden'
+            >
+              <AboutMePanel closePanelCallbackFunction={closePanel}></AboutMePanel>
+            </motion.div> 
+          }
+          
+          
+          {currentActivatedPanel == "project" && 
+          
+            <motion.div
+            initial={{ x: -200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -200, opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            class='z-30 absolute w-full h-full overflow-hidden'
+            onAnimationComplete={() => setIsProjectPanelParentAnimationDone(true)}
+            >
+              <MyProjectsPanel closePanelCallbackFunction={closePanel}  isParentAnimationDone={isProjectPanelParentAnimationDone}></MyProjectsPanel>
+            </motion.div> 
+          }
+        </AnimatePresence>
+        
+
         <Canvas 
         className="w-full h-screen z-0 relative overflow-x-hidden"
         linear={true}
@@ -53,15 +128,29 @@ function SimulationPage() {
           <pointLight  position={[-2, 0.2, -1]} intensity={2} decay={0.5}  color={"#fff1e6"} ></pointLight>
 
           <Home_scene ></Home_scene>
-          <InteractableIndicator></InteractableIndicator>
 
-        
-          <PerspectiveCamera  makeDefault position={[-2.5, 0, 3.3]} fov={32} onUpdate={(self) => self.lookAt(...lookAtCoordinate)}> </PerspectiveCamera>
+          <PerspectiveCamera  makeDefault position={CAMERA_POSITION} fov={32} onUpdate={(self) => self.lookAt(...LOOK_AT_COORDINATE)}> </PerspectiveCamera>
 
           /* 
               The effectcomposer component may cause performance issue
               */
-   
+
+          <Rig></Rig>
+
+          <InteractableIndicator position={[-1.3, 0.5, -1.7]} onclickCallBack={() => interactableClicked("project")}></InteractableIndicator>
+          <InteractableIndicator position={[-0.5, -0.3, 0.2]} onclickCallBack={() => interactableClicked("about")}></InteractableIndicator>
+
+        </Suspense>
+        </Canvas>
+      </div>
+    )
+  }
+  
+  export default SimulationPage
+  
+  /*
+
+
    <EffectComposer>
            
            <Glitch
@@ -77,20 +166,6 @@ function SimulationPage() {
            <Vignette eskil={false} offset={.1} darkness={0.8} />
  
            </EffectComposer>
-        
-        <Rig></Rig>
-
-        </Suspense>
-
-        </Canvas>
-
-      </div>
-    )
-  }
-  
-  export default SimulationPage
-  
-  /*
 
 
 
@@ -103,9 +178,12 @@ function SimulationPage() {
 
 
 
-
-
-
+<mesh position={[-1.4, 0.5, -1.5]}>
+            <boxGeometry
+              args={[0.5, 0.5, 0.5]}
+            />
+            <meshNormalMaterial/>
+          </mesh>
 
 
 

@@ -379,6 +379,8 @@ body{
   max-width: 53vw;
   max-height: 65vh;
   background-color: rgb(243, 242, 247);
+  z-index: 30;
+  position: absolute;
 }
 
 @media (max-width: 1024px) {
@@ -401,7 +403,7 @@ body{
 .profile-pic-container{
   width: 160px;
   height: 160px;
-  border-radius: 80px;
+  background-color: transparent;
 }
 
 
@@ -447,4 +449,12 @@ body{
 .next-project-btn:hover{
   background-color: rgba(0, 0, 0, 0.059);
   
+}
+
+.panel-close{
+  padding-left: 40px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
 }

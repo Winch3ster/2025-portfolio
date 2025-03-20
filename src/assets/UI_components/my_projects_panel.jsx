@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import textBundle from "../../msgbundle";
 import leftChevron from '../icons/left-chevron.png'
 import rightChevron from '../icons/right-chevron_black.png'
@@ -17,10 +17,18 @@ const ProjectPictureComponent = ({isFocused, imageUrl}) =>{
 }
 
 
-const MyProjectsPanel = () => {
+const MyProjectsPanel = ({closePanelCallbackFunction, isParentAnimationDone}) => {
 
-      const [currentFocusedProject, setCurrentFocusedProject] = useState(projectList[0]);
       const [projectObjectList, setProjectObjectListState] = useState(projectList);
+      const [currentFocusedProject, setCurrentFocusedProject] = useState(projectObjectList.find((c) => c.isBeingFocused));
+
+      useEffect(() => {
+        //Force reset state when unmounting component
+        return () => {
+          setProjectObjectListState([...projectList.map(project => ({ ...project }))]);
+        };
+      }, []);
+
 
       const nextSlide = () => {
         setProjectObjectListState((prev) => {
@@ -40,14 +48,15 @@ const MyProjectsPanel = () => {
           return temp;
         })
         console.log("next is clicked")
-        setCurrentFocusedProject(projectObjectList[1]);
+        setCurrentFocusedProject(projectObjectList.find((c) => c.isBeingFocused) );
 
+        
       };
-      
     return(
-
-        <div class="about-me-panel-config md:w-3/4 md:h-3/4 w-full h-9/12 rounded-2xl pt-5">   
-            <div class='pl-10 flex items-center' >
+        <div>
+            <div class='z-20 absolute w-full h-full bg-black opacity-30'></div>
+            <div class="absolute right-10 top-10 about-me-panel-config md:w-3/4 md:h-3/4 w-full h-9/12 rounded-2xl pt-5">   
+              <div class='panel-close' onClick={closePanelCallbackFunction} >
                 <img class='h-4 w-4'  src={leftChevron} alt="" />
                 <div>{textBundle["common.back"]}</div>
             </div>
@@ -55,32 +64,31 @@ const MyProjectsPanel = () => {
 
             <div class="px-14 pt-2">
                 <div class='text-xl font-semibold'>{textBundle["my.projects"]}</div>
-
                 <div id="project-slide-show-container" class="py-2 flex items-center justify-between overflow-hidden">
       
                     <div class="overflow-hidden flex">
-                    <AnimatePresence mode="popLayout">
-                        {projectObjectList.map((block) => {
+                    {isParentAnimationDone && (
+                      <AnimatePresence mode="popLayout">
+                          {projectObjectList.map((block) => {                       
+                            if(block.isVisible ){
+                              return (<motion.div
+                                key={block.id}
+                                class={` rounded-2xl ${block.isBeingFocused ? "h-36 w-56" : "h-28 w-44"} mr-10`}             
+                                style={{ backgroundImage: `url(${block.image})`, backgroundSize: "cover", backgroundPosition: "center" }}
 
-                          if(block.isVisible ){
-                            return (<motion.div
-                              key={block.id}
-                              class={` rounded-2xl ${block.isBeingFocused ? "h-36 w-56" : "h-28 w-44"} mr-10`}             
-                              style={{ backgroundImage: `url(${block.image})`, backgroundSize: "cover", backgroundPosition: "center" }}
-
-                              initial={{ x: 200, opacity: 1 }}
-                              animate={{ x: 0, opacity: 1 }}
-                              exit={{ x: -200, opacity: 0 }}
-                              transition={{ duration: 0.5 }}
-                              layout
-                            >
-                              
-                            </motion.div>)
+                                initial={{ x: 200, opacity: 1 }}
+                                animate={{ x: 0, opacity: 1 }}
+                                exit={{ x: -200, opacity: 0 }}
+                                transition={{ duration: 0.5 }}
+                                layout
+                              >
+                                
+                              </motion.div>)
+                            }
                           }
-                        }
-                      )}
-                        
-                    </AnimatePresence>
+                        )}
+                          
+                      </AnimatePresence>)}
                     </div>
 
                     <div className="w-7 h-16 rounded-2xl flex justify-center items-center cursor-pointer next-project-btn" onClick={nextSlide}>
@@ -109,6 +117,8 @@ const MyProjectsPanel = () => {
                 </div>
             </div> 
         </div>
+        </div>
+        
     )
 }
 

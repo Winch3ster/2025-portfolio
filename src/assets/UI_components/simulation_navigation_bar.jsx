@@ -2,29 +2,34 @@
 import '../../index.css'
 
 import instagramLogo from '../icons/instagram.png'
-import linkedin from '../icons/linkedin.png'
+import effect from '../icons/effect.png'
 import githubLogo from '../icons/github.png'
 import hamburgerMenu from '../icons/hamburger_menu.png'
 import homeIcon from '../icons/home.png'
 import closeNavIcon from '../icons/close.png'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 
 
+import { simulationContext } from '../../context'
 
-
-const QuickNavComponent = ({marginX, marginY, content, link}) => {
-
-
+const QuickNavComponent = ({marginX, marginY, content, link, specialEffectCallback}) => {
+    
     return(
-
+        
         <div >
             
             <div class={`${marginX} ${marginY} quick-nav-comp-effect w-16 h-16 rounded-4xl flex justify-center items-center quick-nav-component-container`}>
                 
-                <div class='bg-white w-12 h-12 flex rounded-4xl justify-center items-center'>
-                    <a href={`${link}`} target="_blank">
+                <div class='bg-white w-12 h-12 flex rounded-4xl justify-center items-center' onClick={() => specialEffectCallback()} >
+
+                    {specialEffectCallback ?
                         <img className="quick-nav-component-content" src={content} alt="" />
-                    </a>
+                        :
+                        <a href={`${link}`} target="_blank">
+                            <img className="quick-nav-component-content" src={content} alt="" />
+                        </a>
+                    }
+                   
                 </div>
 
             </div>
@@ -36,6 +41,9 @@ const QuickNavComponent = ({marginX, marginY, content, link}) => {
 
 
 const QuickNavigation = ({navIsOpen}) => {
+    const contextValues = useContext(simulationContext);
+
+   
 
     return(
         <div class={`absolute top-0 w-72 right-0 h-full flex items-center overflow-hidden  opacity-70 quick-navigation-open-animation ${navIsOpen ? "open" : ""} `}>
@@ -43,7 +51,7 @@ const QuickNavigation = ({navIsOpen}) => {
                 <QuickNavComponent marginX={"ml-[25px]"} marginY={"-mt-[10px]"} content={homeIcon}></QuickNavComponent>
                 <QuickNavComponent marginX={"-ml-[25px]"} marginY={"-mt-[5px]"} content={githubLogo} link={"https://github.com/Winch3ster"}></QuickNavComponent>
                 <QuickNavComponent marginX={"-ml-[25px]"} marginY={"mt-[15px]"} content={instagramLogo} link={"https://www.instagram.com/king_st0ne/"} ></QuickNavComponent>
-                <QuickNavComponent marginX={"ml-[25px]"} marginY={"-mt-[5px]"} content={linkedin} ></QuickNavComponent>
+                <QuickNavComponent marginX={"ml-[25px]"} marginY={"-mt-[5px]"} content={effect} specialEffectCallback={contextValues}></QuickNavComponent>
 
             </div>
         </div>
@@ -53,7 +61,6 @@ const QuickNavigation = ({navIsOpen}) => {
 
 
 const SimulationNav = () => {
-
     //This is for the navigation
 
     //Name, status --> looking for job, employed, unavailable, social media links 
@@ -64,9 +71,6 @@ const SimulationNav = () => {
     const [quickNavIsOpen, setQuickNavIsOpenState] = useState(false);
 
     function openQuickNav(){
-
-        console.log("openQuickNav is running");
-        console.log(quickNavIsOpen);
         setQuickNavIsOpenState(!quickNavIsOpen);
     }
 

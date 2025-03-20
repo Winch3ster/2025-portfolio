@@ -29,8 +29,6 @@ function Rig() {
 }
 
 
-
-
 function SimulationPage() {
 
    
@@ -45,7 +43,6 @@ function SimulationPage() {
         className="w-full h-screen z-0 relative overflow-x-hidden"
         linear={true}
         >
-      
 
           <Suspense> 
           <color attach="background" args={["#53545c"]} />
@@ -55,41 +52,37 @@ function SimulationPage() {
           <pointLight  position={[2, 1, 1]} intensity={9} decay={0.2} color={"#89a2b3"} ></pointLight>
           <pointLight  position={[-2, 0.2, -1]} intensity={2} decay={0.5}  color={"#fff1e6"} ></pointLight>
 
-     
-         
-          
-         
-        
           <Home_scene ></Home_scene>
-      
-
           <InteractableIndicator></InteractableIndicator>
-
-
-  
 
         
           <PerspectiveCamera  makeDefault position={[-2.5, 0, 3.3]} fov={32} onUpdate={(self) => self.lookAt(...lookAtCoordinate)}> </PerspectiveCamera>
 
-
-
-
-
-
           /* 
               The effectcomposer component may cause performance issue
               */
-             
+   
+   <EffectComposer>
+           
+           <Glitch
+               delay={[1.5, 13.5]} // min and max glitch delay
+               duration={[0.6, 1.0]} // min and max glitch duration
+               strength={[0.005, 0.01]} // min and max glitch strength
+               mode={GlitchMode.SPORADIC} // glitch mode
+               active // turn on/off the effect (switches between "mode" prop and GlitchMode.DISABLED)
+               ratio={0.25} // Threshold for strong glitches, 0 - no weak glitches, 1 - no strong glitches.
+             />
+           <Bloom luminanceThreshold={0} luminanceSmoothing={0.6} height={100} intensity={0.2} />
+ 
+           <Vignette eskil={false} offset={.1} darkness={0.8} />
+ 
+           </EffectComposer>
+        
         <Rig></Rig>
 
         </Suspense>
 
-
         </Canvas>
-
-    
-
-
 
       </div>
     )
@@ -106,21 +99,6 @@ function SimulationPage() {
 
 
 
-   <EffectComposer>
-           
-           <Glitch
-               delay={[1.5, 13.5]} // min and max glitch delay
-               duration={[0.6, 1.0]} // min and max glitch duration
-               strength={[0.005, 0.01]} // min and max glitch strength
-               mode={GlitchMode.SPORADIC} // glitch mode
-               active // turn on/off the effect (switches between "mode" prop and GlitchMode.DISABLED)
-               ratio={0.25} // Threshold for strong glitches, 0 - no weak glitches, 1 - no strong glitches.
-             />
-           <Bloom luminanceThreshold={0} luminanceSmoothing={0.6} height={100} intensity={0.2} />
- 
-           <Vignette eskil={false} offset={.1} darkness={0.8} />
- 
-           </EffectComposer>
 
 
 
@@ -134,7 +112,7 @@ function SimulationPage() {
 
 
 
-           
+
 <EffectComposer>
            
           <Glitch

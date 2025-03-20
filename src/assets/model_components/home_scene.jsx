@@ -6,7 +6,7 @@ export const Home_scene = ({...props}) => {
     const group = useRef()
     
     const { nodes, materials,animations } = useGLTF(
-      "./src/assets/models/14_march_OO_raiser_portfolio_final_version_compression.glb"
+      "./src/assets/models/17_march_OO_raiser_portfolio_final_version_compression_blue_color_fixed.glb"
 
     );
     const { actions } = useAnimations(animations, group);
@@ -14,7 +14,6 @@ export const Home_scene = ({...props}) => {
     
     useEffect(() => {
         const animationList = Object.keys(actions);
-        console.log(animationList);
         //actions["bodyAction"].play();
         animationList.forEach(animation => {
             actions[animation].play();
@@ -27,42 +26,43 @@ export const Home_scene = ({...props}) => {
             <group name="left_leg">
               <mesh
                 name="00Raiser_1-repaired084"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired084'].geometry}
                 material={materials.white}
+              
               />
               <mesh
                 name="00Raiser_1-repaired084_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired084_1'].geometry}
                 material={materials.dark_gray}
               />
               <mesh
                 name="00Raiser_1-repaired084_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired084_2'].geometry}
                 material={materials.gray}
               />
               <mesh
                 name="00Raiser_1-repaired084_3"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired084_3'].geometry}
                 material={materials.green}
               />
               <mesh
                 name="00Raiser_1-repaired084_4"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired084_4'].geometry}
                 material={materials.red}
               />
               <mesh
                 name="00Raiser_1-repaired084_5"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired084_5'].geometry}
                 material={materials.white_small}
@@ -71,49 +71,49 @@ export const Home_scene = ({...props}) => {
             <group name="gn_drives">
               <mesh
                 name="00Raiser_1-repaired021"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired021'].geometry}
                 material={materials.white_small}
               />
               <mesh
                 name="00Raiser_1-repaired021_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired021_1'].geometry}
                 material={materials.dark_gray}
               />
               <mesh
                 name="00Raiser_1-repaired021_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired021_2'].geometry}
                 material={materials.main_blue}
               />
               <mesh
                 name="00Raiser_1-repaired021_3"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired021_3'].geometry}
                 material={materials.white}
               />
               <mesh
                 name="00Raiser_1-repaired021_4"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired021_4'].geometry}
                 material={materials.black}
               />
               <mesh
                 name="00Raiser_1-repaired021_5"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired021_5'].geometry}
                 material={materials.green}
               />
               <mesh
                 name="00Raiser_1-repaired021_6"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired021_6'].geometry}
                 material={materials.gray}
@@ -122,77 +122,79 @@ export const Home_scene = ({...props}) => {
             <group name="body">
               <mesh
                 name="Plane004_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane004_1.geometry}
                 material={materials.Yellow}
               />
               <mesh
                 name="Plane004_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane004_2.geometry}
                 material={materials.main_blue}
+                
               />
+
               <mesh
                 name="Plane004_3"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane004_3.geometry}
                 material={materials.white}
               />
               <mesh
                 name="Plane004_4"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane004_4.geometry}
                 material={materials.red}
               />
               <mesh
                 name="Plane004_5"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane004_5.geometry}
                 material={materials.orange}
               />
               <mesh
                 name="Plane004_6"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane004_6.geometry}
                 material={materials.dark_gray}
               />
               <mesh
                 name="Plane004_7"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane004_7.geometry}
                 material={materials.gray}
               />
               <mesh
                 name="Plane004_8"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane004_8.geometry}
                 material={materials.green}
               />
               <mesh
                 name="Plane004_9"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane004_9.geometry}
                 material={materials.black}
               />
               <mesh
                 name="Plane004_10"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane004_10.geometry}
                 material={materials.glossy_red}
               />
               <mesh
                 name="Plane004_11"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane004_11.geometry}
                 material={materials.white_small}
@@ -201,35 +203,35 @@ export const Home_scene = ({...props}) => {
             <group name="left_hand">
               <mesh
                 name="00Raiser_1-repaired031"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired031'].geometry}
                 material={materials.dark_gray}
               />
               <mesh
                 name="00Raiser_1-repaired031_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired031_1'].geometry}
                 material={materials.main_blue}
               />
               <mesh
                 name="00Raiser_1-repaired031_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired031_2'].geometry}
                 material={materials.white}
               />
               <mesh
                 name="00Raiser_1-repaired031_3"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired031_3'].geometry}
                 material={materials.white_shading}
               />
               <mesh
                 name="00Raiser_1-repaired031_4"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired031_4'].geometry}
                 material={materials.gray}
@@ -238,35 +240,35 @@ export const Home_scene = ({...props}) => {
             <group name="right_hand">
               <mesh
                 name="00Raiser_1-repaired041"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired041'].geometry}
                 material={materials.dark_gray}
               />
               <mesh
                 name="00Raiser_1-repaired041_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired041_1'].geometry}
                 material={materials.main_blue}
               />
               <mesh
                 name="00Raiser_1-repaired041_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired041_2'].geometry}
                 material={materials.white}
               />
               <mesh
                 name="00Raiser_1-repaired041_3"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired041_3'].geometry}
                 material={materials.white_shading}
               />
               <mesh
                 name="00Raiser_1-repaired041_4"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired041_4'].geometry}
                 material={materials.gray}
@@ -275,21 +277,21 @@ export const Home_scene = ({...props}) => {
             <group name="shoulder">
               <mesh
                 name="00Raiser_1-repaired042"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired042'].geometry}
                 material={materials.dark_gray}
               />
               <mesh
                 name="00Raiser_1-repaired042_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired042_1'].geometry}
                 material={materials.main_blue}
               />
               <mesh
                 name="00Raiser_1-repaired042_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes['00Raiser_1-repaired042_2'].geometry}
                 material={materials.white}
@@ -298,14 +300,14 @@ export const Home_scene = ({...props}) => {
             <group name="Cube">
               <mesh
                 name="Cube004_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cube004_1.geometry}
                 material={materials.main_white}
               />
               <mesh
                 name="Cube004_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cube004_2.geometry}
                 material={materials.main_gray}
@@ -314,14 +316,14 @@ export const Home_scene = ({...props}) => {
             <group name="Plane004">
               <mesh
                 name="Plane005_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane005_1.geometry}
                 material={materials.main_gray}
               />
               <mesh
                 name="Plane005_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane005_2.geometry}
                 material={materials.main_white}
@@ -330,14 +332,14 @@ export const Home_scene = ({...props}) => {
             <group name="Plane005">
               <mesh
                 name="Plane006_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane006_1.geometry}
                 material={materials.main_gray}
               />
               <mesh
                 name="Plane006_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane006_2.geometry}
                 material={materials.main_white}
@@ -346,14 +348,14 @@ export const Home_scene = ({...props}) => {
             <group name="Cube001">
               <mesh
                 name="Cube005"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cube005.geometry}
                 material={materials.standard_dark_gray}
               />
               <mesh
                 name="Cube005_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cube005_1.geometry}
                 material={materials.main_white}
@@ -362,14 +364,14 @@ export const Home_scene = ({...props}) => {
             <group name="Cube002">
               <mesh
                 name="Cube006"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cube006.geometry}
                 material={materials.standard_dark_gray}
               />
               <mesh
                 name="Cube006_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cube006_1.geometry}
                 material={materials.main_white}
@@ -378,14 +380,14 @@ export const Home_scene = ({...props}) => {
             <group name="Cube003">
               <mesh
                 name="Cube007"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cube007.geometry}
                 material={materials.main_white}
               />
               <mesh
                 name="Cube007_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cube007_1.geometry}
                 material={materials.main_gray}
@@ -393,70 +395,70 @@ export const Home_scene = ({...props}) => {
             </group>
             <mesh
               name="Cube008"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Cube008.geometry}
               material={materials.standard_dark_gray}
             />
             <mesh
               name="Plane006"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Plane006.geometry}
               material={materials.main_white}
             />
             <mesh
               name="Plane008"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Plane008.geometry}
               material={materials.main_white}
             />
             <mesh
               name="Cylinder003"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Cylinder003.geometry}
               material={materials.standard_dark_gray}
             />
             <mesh
               name="Plane009"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Plane009.geometry}
               material={materials.main_white}
             />
             <mesh
               name="Cube011"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Cube011.geometry}
               material={materials.main_white}
             />
             <mesh
               name="Plane012"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Plane012.geometry}
               material={materials.main_white}
             />
             <mesh
               name="Plane013"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Plane013.geometry}
               material={materials.main_white}
             />
             <mesh
               name="Plane014"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Plane014.geometry}
               material={materials.main_white}
             />
             <mesh
               name="Cube014"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Cube014.geometry}
               material={materials.main_white}
@@ -464,14 +466,14 @@ export const Home_scene = ({...props}) => {
             <group name="Plane015">
               <mesh
                 name="Plane016_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane016_1.geometry}
                 material={materials.main_gray}
               />
               <mesh
                 name="Plane016_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane016_2.geometry}
                 material={materials.main_white}
@@ -480,14 +482,14 @@ export const Home_scene = ({...props}) => {
             <group name="Plane016">
               <mesh
                 name="Plane017_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane017_1.geometry}
                 material={materials.main_gray}
               />
               <mesh
                 name="Plane017_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane017_2.geometry}
                 material={materials.main_white}
@@ -496,14 +498,14 @@ export const Home_scene = ({...props}) => {
             <group name="Plane017">
               <mesh
                 name="Plane018"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane018.geometry}
                 material={materials.main_gray}
               />
               <mesh
                 name="Plane018_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane018_1.geometry}
                 material={materials.main_white}
@@ -511,42 +513,42 @@ export const Home_scene = ({...props}) => {
             </group>
             <mesh
               name="Plane001"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Plane001.geometry}
               material={materials.main_white}
             />
             <mesh
               name="Cube015"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Cube015.geometry}
               material={materials.main_white}
             />
             <mesh
               name="Plane002"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Plane002.geometry}
               material={materials.main_white}
             />
             <mesh
               name="Cube016"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Cube016.geometry}
               material={materials.main_white}
             />
             <mesh
               name="Cube017"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Cube017.geometry}
               material={materials.main_white}
             />
             <mesh
               name="Cube018"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Cube018.geometry}
               material={materials.main_white}
@@ -554,21 +556,21 @@ export const Home_scene = ({...props}) => {
             <group name="0_Hangar">
               <mesh
                 name="Cylinder003_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cylinder003_1.geometry}
                 material={materials.hangar_base}
               />
               <mesh
                 name="Cylinder003_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cylinder003_2.geometry}
                 material={materials.hangar_tile}
               />
               <mesh
                 name="Cylinder003_3"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cylinder003_3.geometry}
                 material={materials.light}
@@ -577,14 +579,14 @@ export const Home_scene = ({...props}) => {
             <group name="Cube009">
               <mesh
                 name="Cube009_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cube009_1.geometry}
                 material={materials.main_white}
               />
               <mesh
                 name="Cube009_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cube009_2.geometry}
                 material={materials.main_gray}
@@ -592,35 +594,35 @@ export const Home_scene = ({...props}) => {
             </group>
             <mesh
               name="Cube004"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Cube004.geometry}
               material={materials.main_white}
             />
             <mesh
               name="Cylinder015"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Cylinder015.geometry}
               material={materials.main_gray}
             />
             <mesh
               name="Cylinder017"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Cylinder017.geometry}
               material={materials.standard_dark_gray}
             />
             <mesh
               name="Cylinder021"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Cylinder021.geometry}
               material={materials.standard_dark_gray}
             />
             <mesh
               name="Cylinder022"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Cylinder022.geometry}
               material={materials.standard_dark_gray}
@@ -628,14 +630,14 @@ export const Home_scene = ({...props}) => {
             <group name="Cylinder023">
               <mesh
                 name="Cylinder033_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cylinder033_1.geometry}
                 material={materials.main_white}
               />
               <mesh
                 name="Cylinder033_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cylinder033_2.geometry}
                 material={materials.main_gray}
@@ -644,14 +646,14 @@ export const Home_scene = ({...props}) => {
             <group name="Cylinder024">
               <mesh
                 name="Cylinder024_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cylinder024_1.geometry}
                 material={materials.main_white}
               />
               <mesh
                 name="Cylinder024_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cylinder024_2.geometry}
                 material={materials.main_gray}
@@ -660,14 +662,14 @@ export const Home_scene = ({...props}) => {
             <group name="Cylinder025">
               <mesh
                 name="Cylinder025_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cylinder025_1.geometry}
                 material={materials.main_white}
               />
               <mesh
                 name="Cylinder025_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Cylinder025_2.geometry}
                 material={materials.main_gray}
@@ -675,7 +677,7 @@ export const Home_scene = ({...props}) => {
             </group>
             <mesh
               name="Cylinder033"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Cylinder033.geometry}
               material={materials.main_white}
@@ -683,21 +685,21 @@ export const Home_scene = ({...props}) => {
             <group name="Plane007">
               <mesh
                 name="Plane051"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane051.geometry}
                 material={materials.main_white}
               />
               <mesh
                 name="Plane051_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane051_1.geometry}
                 material={materials.main_gray}
               />
               <mesh
                 name="Plane051_2"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane051_2.geometry}
                 material={materials.standard_dark_gray}
@@ -706,14 +708,14 @@ export const Home_scene = ({...props}) => {
             <group name="Plane025">
               <mesh
                 name="Plane032"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane032.geometry}
                 material={materials.main_white}
               />
               <mesh
                 name="Plane032_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane032_1.geometry}
                 material={materials.main_gray}
@@ -722,14 +724,14 @@ export const Home_scene = ({...props}) => {
             <group name="Plane027">
               <mesh
                 name="Plane034"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane034.geometry}
                 material={materials.main_gray}
               />
               <mesh
                 name="Plane034_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane034_1.geometry}
                 material={materials.main_white}
@@ -738,14 +740,14 @@ export const Home_scene = ({...props}) => {
             <group name="Plane028">
               <mesh
                 name="Plane035"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane035.geometry}
                 material={materials.main_white}
               />
               <mesh
                 name="Plane035_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane035_1.geometry}
                 material={materials.standard_dark_gray}
@@ -754,14 +756,14 @@ export const Home_scene = ({...props}) => {
             <group name="Plane030">
               <mesh
                 name="Plane037"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane037.geometry}
                 material={materials.main_gray}
               />
               <mesh
                 name="Plane037_1"
-                castShadow
+                
                 receiveShadow
                 geometry={nodes.Plane037_1.geometry}
                 material={materials.main_white}
@@ -769,14 +771,14 @@ export const Home_scene = ({...props}) => {
             </group>
             <mesh
               name="Plane042"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Plane042.geometry}
               material={materials.main_white}
             />
             <mesh
               name="Plane043"
-              castShadow
+              
               receiveShadow
               geometry={nodes.Plane043.geometry}
               material={materials.main_gray}

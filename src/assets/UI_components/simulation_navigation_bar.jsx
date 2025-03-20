@@ -12,7 +12,7 @@ import { useState } from 'react'
 
 
 
-const QuickNavComponent = ({marginX, marginY, content}) => {
+const QuickNavComponent = ({marginX, marginY, content, link}) => {
 
 
     return(
@@ -22,8 +22,9 @@ const QuickNavComponent = ({marginX, marginY, content}) => {
             <div class={`${marginX} ${marginY} quick-nav-comp-effect w-16 h-16 rounded-4xl flex justify-center items-center quick-nav-component-container`}>
                 
                 <div class='bg-white w-12 h-12 flex rounded-4xl justify-center items-center'>
-                    <img className="quick-nav-component-content" src={content} alt="" />
-
+                    <a href={`${link}`} target="_blank">
+                        <img className="quick-nav-component-content" src={content} alt="" />
+                    </a>
                 </div>
 
             </div>
@@ -40,9 +41,9 @@ const QuickNavigation = ({navIsOpen}) => {
         <div class={`absolute top-0 w-72 right-0 h-full flex items-center overflow-hidden  opacity-70 quick-navigation-open-animation ${navIsOpen ? "open" : ""} `}>
             <div class="absolute ml-28 h-60 w-60 radar-quick-menu ">
                 <QuickNavComponent marginX={"ml-[25px]"} marginY={"-mt-[10px]"} content={homeIcon}></QuickNavComponent>
-                <QuickNavComponent marginX={"-ml-[25px]"} marginY={"-mt-[5px]"} content={githubLogo}></QuickNavComponent>
-                <QuickNavComponent marginX={"-ml-[25px]"} marginY={"mt-[15px]"} content={instagramLogo}></QuickNavComponent>
-                <QuickNavComponent marginX={"ml-[25px]"} marginY={"-mt-[5px]"} content={linkedin}></QuickNavComponent>
+                <QuickNavComponent marginX={"-ml-[25px]"} marginY={"-mt-[5px]"} content={githubLogo} link={"https://github.com/Winch3ster"}></QuickNavComponent>
+                <QuickNavComponent marginX={"-ml-[25px]"} marginY={"mt-[15px]"} content={instagramLogo} link={"https://www.instagram.com/king_st0ne/"} ></QuickNavComponent>
+                <QuickNavComponent marginX={"ml-[25px]"} marginY={"-mt-[5px]"} content={linkedin} ></QuickNavComponent>
 
             </div>
         </div>

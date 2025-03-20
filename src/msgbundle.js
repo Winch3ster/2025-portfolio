@@ -16,7 +16,7 @@ const textBundle = {
     "about.me.panel.based": "Malaysia",
     "about.me.panel.description": "Hi! Thanks for visiting my portfolio website. I'm Kingston—a Computer Science graduate from Anglia Ruskin University with a passion for software development and continuous learning.", 
     "about.me.panel.description.2": "Beyond coding, I enjoy exploring my favourite subjects like physics, evolutionary biology, and conflict history. Artistically, I also have a passion for 3D modeling, animation, miniature art abd playing guitar.",
-    "about.me.panel.ps": "PS: I dont watch anime....",
+    "about.me.panel.ps": "PS: I don't watch anime....",
     "common.github.button.text": "</Github>",
     "common.instagram": "Instagram",
     "common.back": "Back",

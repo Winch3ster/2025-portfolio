@@ -23,6 +23,8 @@ const textBundle = {
     "my.projects": "My Projects",
     "attached.company":"Attached Company: ",
     "model.created.in.blender":"Model and scene created in Blender",
+    "notification.effect.composer":"Click this icon in the quick navigation menu to toggle effect composure on or off.",
+    "notification.pc.more.imersive":"Use computers for a more immersive experience.",
   };
 
 

@@ -33,7 +33,7 @@ const SimulationPageOverlay = () => {
                 {showNotification && (
                     <NotificationPanel
                         closeNotificationCallback={closeNotificationCallback}
-                        content={textBundle["notification.effect.composer"]}
+                        content={textBundle["notification.effect.composer"]}        
                         icon={effect}
                     />
                 )}

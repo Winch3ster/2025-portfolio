@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+
+
+  .awd{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .circle {
+    width: auto;
+    height: auto;
+    transform: rotate(var(--angle));
+  }

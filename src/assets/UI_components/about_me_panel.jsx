@@ -46,8 +46,13 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                             <div class="h-5"></div>
 
                             <div class="flex">
-                                <div class="mr-10 instagram-styled-btn">{textBundle["common.instagram"]}</div>
-                                <div class='github-styled-btn'>{textBundle["common.github.button.text"]}</div>
+                                <a href="https://www.instagram.com/king_st0ne/" target="_blank">
+                                    <div class="mr-10 instagram-styled-btn">{textBundle["common.instagram"]}</div>
+                                </a>
+
+                                <a href="https://github.com/Winch3ster" target="_blank">
+                                    <div class='github-styled-btn'>{textBundle["common.github.button.text"]}</div>
+                                </a>
                             </div>
                             <div class="h-3"></div>
                             <div class="flex justify-end">

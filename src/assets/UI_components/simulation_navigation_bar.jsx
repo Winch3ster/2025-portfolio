@@ -12,7 +12,7 @@ import { useContext, useState } from 'react'
 
 import { simulationContext } from '../../context'
 
-const QuickNavComponent = ({marginX, marginY, content, link, specialEffectCallback}) => {
+const QuickNavComponent = ({marginX, marginY, content, link, specialEffectCallback, isHomeButton}) => {
         console.log(specialEffectCallback)
     
 
@@ -24,14 +24,18 @@ const QuickNavComponent = ({marginX, marginY, content, link, specialEffectCallba
                 
                 <div class={`bg-white w-12 h-12 flex rounded-4xl justify-center items-center ${specialEffectCallback ?  !specialEffectCallback[1] && " enable-special-effect-off" : ""} `} onClick={() =>  specialEffectCallback[0]()}> 
 
-                    {specialEffectCallback ?
-                        <img className="quick-nav-component-content" src={content} alt="" />
-                        :
-                        <a href={`${link}`} target="_blank">
+                    {isHomeButton ?
+                        <a href='/'>
                             <img className="quick-nav-component-content" src={content} alt="" />
                         </a>
+                        :
+                        specialEffectCallback ?
+                            <img className="quick-nav-component-content" src={content} alt="" />
+                            :
+                            <a href={`${link}`} target="_blank">
+                                <img className="quick-nav-component-content" src={content} alt="" />
+                            </a>
                     }
-                   
                 </div>
 
             </div>
@@ -50,7 +54,7 @@ const QuickNavigation = ({navIsOpen}) => {
     return(
         <div class={`absolute top-0 w-72 right-0 h-full flex items-center overflow-hidden  opacity-70 quick-navigation-open-animation ${navIsOpen ? "open" : ""} `}>
             <div class="absolute ml-28 h-60 w-60 radar-quick-menu ">
-                <QuickNavComponent marginX={"ml-[25px]"} marginY={"-mt-[10px]"} content={homeIcon}></QuickNavComponent>
+                <QuickNavComponent marginX={"ml-[25px]"} marginY={"-mt-[10px]"} content={homeIcon} isHomeButton={true}></QuickNavComponent>
                 <QuickNavComponent marginX={"-ml-[25px]"} marginY={"-mt-[5px]"} content={githubLogo} link={"https://github.com/Winch3ster"}></QuickNavComponent>
                 <QuickNavComponent marginX={"-ml-[25px]"} marginY={"mt-[15px]"} content={instagramLogo} link={"https://www.instagram.com/king_st0ne/"} ></QuickNavComponent>
                 <QuickNavComponent marginX={"ml-[25px]"} marginY={"-mt-[5px]"} content={effect} specialEffectCallback={contextValues}></QuickNavComponent>

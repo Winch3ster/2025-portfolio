@@ -21,7 +21,7 @@ const LandingPageOverlay = () => {
                 <div class='h-8 bg-transparent '></div>
 
                 <div className="flex justify-center items-center">
-                    <a className='enter-simulation-btn' href=''>
+                    <a className='enter-simulation-btn' href='/simulation'>
                         
                         <span>
                             {textBundle["landing.page.enter.simulation"]}

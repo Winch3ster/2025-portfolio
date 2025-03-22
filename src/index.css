@@ -349,6 +349,14 @@ body{
   width: auto;
   
 }
+
+.quick-nav-component-content-mobile{
+  height: 20px;
+  width: auto;
+  
+}
+
+
 .quick-nav-comp-effect{
  
   border: none;

@@ -6,15 +6,24 @@ import effect from '../icons/effect.png';
 import NotificationPanel from "./notification";
 import { AnimatePresence } from "framer-motion";
 
+const SMALL_HEIGHT_ASPECT_RATIO = 2; //width/height 
+
+const isMobile = window.matchMedia("(any-pointer: coarse)").matches &&  window.innerHeight < 500;
+
+
 const WordOverlay = () => {
+
     return (
-        <div className='absolute top-5 left-20 pl-5 text-white tracking-widest z-20 standard-small-text-size'>
+        <div className={`absolute top-5 ${isMobile ? "left-3": "left-20"} pl-5 text-white tracking-widest z-20 standard-small-text-size`}>
             {textBundle["model.created.in.blender"]}
         </div>
     );
 };
 
 const SimulationPageOverlay = ({currentActivatedPanel}) => {
+
+
+
     const [showNotification, setShowNotification] = useState(false);
     const closeNotificationCallback = () => {
         setShowNotification(false);
@@ -43,7 +52,7 @@ const SimulationPageOverlay = ({currentActivatedPanel}) => {
 
             {currentActivatedPanel == "none" && (
 
-<SimulationTitle />
+            <SimulationTitle />
             )}
             
         </>

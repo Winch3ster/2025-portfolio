@@ -17,13 +17,10 @@ body{
   src: url(./assets/fonts/xspace/ttf/xspace-xspace-400.ttf);
 }
 
-
-
 @theme{
   --font-*: initial;
   --font-sans: "Inter Tight", sans-serif;
   --font-xspace: xspace;
-
 }
 
 .standard-small-text-size{

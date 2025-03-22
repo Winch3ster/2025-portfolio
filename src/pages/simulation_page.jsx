@@ -18,8 +18,7 @@ const LOOK_AT_COORDINATE = [1.3, 0.6, -3.8];
 import { simulationContext } from "../context";
 
 
-function Rig() {
-
+function Rig({currentActivatedPanel}) {
   const { camera } = useThree()
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
@@ -40,9 +39,16 @@ function Rig() {
     const xOffset = mouse.x * 0.3;
     const yOffset =  mouse.y*0.2;
 
-    const newPosition = new Vector3(-2.5 + xOffset, 0 + yOffset, 3.3 + xOffset);
+    var newPosition = new Vector3(-2.5 + xOffset, 0 + yOffset, 3.3 + xOffset);
+    var lookAtPosition = new Vector3(1.3, 0.6, -3.8);
+
+    if(currentActivatedPanel == "about"){
+      newPosition = new Vector3(xOffset, -0.1 + yOffset, 2.86 + xOffset);
+    }
+
+
     camera.position.lerp(newPosition, 0.05)
-    camera.lookAt(1.3, 0.6, -3.8);
+    camera.lookAt(lookAtPosition);
 
   })
 }
@@ -51,7 +57,10 @@ function Rig() {
 
 function SimulationPage({loadingCallback}) {
 
-    const [enableSpecialEffect, setEnableSpecialEffect ] = useState(true);
+  
+
+
+    const [enableSpecialEffect, setEnableSpecialEffect ] = useState(false);
 
     const [currentActivatedPanel, setCurrentActivatedPanel] = useState("none");
 
@@ -104,7 +113,7 @@ function SimulationPage({loadingCallback}) {
           
 
             <div className='w-full h-screen overflow-hidden'>
-            <SimulationPageOverlay></SimulationPageOverlay>
+            <SimulationPageOverlay currentActivatedPanel={currentActivatedPanel}></SimulationPageOverlay>
               
             
               <AnimatePresence>
@@ -174,12 +183,11 @@ function SimulationPage({loadingCallback}) {
                 
                 }
 
-                <Rig></Rig>
-
+                 {/*<Rig></Rig> */}
+                 <Rig currentActivatedPanel={currentActivatedPanel}></Rig>
                 <InteractableIndicator position={[-1.3, 0.6, -1.7]} onclickCallBack={() => interactableClicked("project")}></InteractableIndicator>
                 <InteractableIndicator position={[-0.5, -0.3, 0.2]} onclickCallBack={() => interactableClicked("about")}></InteractableIndicator>
 
-                
                 {/*</Suspense>*/}
               </Canvas>
             </div>

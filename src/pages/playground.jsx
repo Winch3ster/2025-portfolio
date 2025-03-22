@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, lazy } from "react";
 import '../playground.css'
 import arc from '../assets/icons/arc.png'
 import { useFrame, useThree } from "@react-three/fiber";
@@ -8,6 +8,13 @@ import MyProjectsPanel from "../assets/UI_components/my_projects_panel";
 import NotificationPanel from "../assets/UI_components/notification";
 import textBundle from "../msgbundle";
 import effect from '../assets/icons/effect.png'
+import LoadingPage from "./loading_page";
+import LoadingPageDiv from "./loading_page_div";
+
+
+const LandingPage = lazy(() => import("./landing_page"));
+
+
 
 const ToPleaseReact= () =>{
     const { camera, mouse } = useThree()
@@ -32,16 +39,19 @@ const ToPleaseReact= () =>{
 
 function PlaygroundPage() {
 
-    const closeNotificationCallback = () =>{
-        console.log("closing notification panel")
+    //Load this shit first, then lazy load everything else 
+    const [isLoading, setIsLoading] = useState(true);
+
+    const setIsLoadingHelper = () =>{
+        setIsLoading(false);
     }
     return (
 
+        <>        
+        <LoadingPageDiv />
 
-<div className='w-full h-screen overflow-hidden bg-gray-950'>
-        <NotificationPanel closeNotificationCallback={closeNotificationCallback} content={textBundle["notification.effect.composer"]} icon={effect}></NotificationPanel>
-
-</div>
+                    <LandingPage callbackfunction={setIsLoadingHelper} />
+                    </>
     )
 }
 

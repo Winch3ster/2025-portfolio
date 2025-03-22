@@ -14,7 +14,7 @@ const WordOverlay = () => {
     );
 };
 
-const SimulationPageOverlay = () => {
+const SimulationPageOverlay = ({currentActivatedPanel}) => {
     const [showNotification, setShowNotification] = useState(false);
     const closeNotificationCallback = () => {
         setShowNotification(false);
@@ -40,7 +40,12 @@ const SimulationPageOverlay = () => {
             </AnimatePresence>
             <WordOverlay />
             <SimulationNav />
-            <SimulationTitle />
+
+            {currentActivatedPanel == "none" && (
+
+<SimulationTitle />
+            )}
+            
         </>
     );
 };

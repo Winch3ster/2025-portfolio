@@ -27,6 +27,9 @@ const textBundle = {
     "notification.pc.more.imersive":"Use computers for a more immersive experience.",
     "loading.asset": "Loading asset, might take a while...",
     "please.rotate.device": "Please rotate your device to landscape mode.",
+    "pc.for.more.interactive.experience": "View on computers for more interactive experience.",
+    "background.model.movable": "Background models have slight interactive movement.",
+    "common.got.it": "Got it!",
   };
 
 

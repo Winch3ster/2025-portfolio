@@ -535,3 +535,18 @@ body{
   border-radius: 10px;
   border: 2px solid white;
 }
+
+.tutorial-image-container{
+  width: 130px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swipe-icon{
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: white;
+}

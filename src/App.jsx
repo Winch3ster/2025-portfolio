@@ -1,4 +1,4 @@
-import { createContext, lazy, Suspense } from 'react';
+import { createContext, lazy, Suspense, useEffect, useState } from 'react';
 import { BrowserRouter,Router, Routes, Route, createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoadingPage from './pages/loading_page.jsx';
 

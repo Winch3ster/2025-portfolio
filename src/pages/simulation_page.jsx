@@ -49,7 +49,7 @@ function Rig() {
 
 
 
-function SimulationPage() {
+function SimulationPage({loadingCallback}) {
 
     const [enableSpecialEffect, setEnableSpecialEffect ] = useState(true);
 
@@ -57,8 +57,20 @@ function SimulationPage() {
 
     //[My Projects] Play the project picture slide's entrance animation AFTER parent component's animation finishes 
     const [isProjectPanelParentAnimationDone, setIsProjectPanelParentAnimationDone] = useState(false);
-
     
+    const [loadingScene, setLoadingScene] = useState(true);
+
+    useEffect(() => {
+      if(loadingScene == false){
+        loadingCallback()
+    }
+      
+    }, [loadingScene]);
+    
+    function setIsLoadingHelperScene(){
+      setLoadingScene(false);
+    }
+
     //"about" --> about me
     //"project" --> my projects
     const interactableClicked = (panel) =>{
@@ -88,87 +100,91 @@ function SimulationPage() {
     }
 
     return (
-      <simulationContext.Provider value={[toggleSpecialEffectHelper, enableSpecialEffect]}>
-        <div className='w-full h-screen overflow-hidden'>
-        <SimulationPageOverlay></SimulationPageOverlay>
-          
-        
-          <AnimatePresence>
-            {currentActivatedPanel == "about" && 
-              <motion.div
-              initial={{ x: -200, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -200, opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              class='z-30 absolute w-full h-full overflow-hidden'
-              >
-                <AboutMePanel closePanelCallbackFunction={closePanel}></AboutMePanel>
-              </motion.div> 
-            }
-            
-            
-            {currentActivatedPanel == "project" && 
-            
-              <motion.div
-              initial={{ x: -200, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -200, opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              class='z-30 absolute w-full h-full overflow-hidden'
-              onAnimationComplete={() => setIsProjectPanelParentAnimationDone(true)}
-              >
-                <MyProjectsPanel closePanelCallbackFunction={closePanel}  isParentAnimationDone={isProjectPanelParentAnimationDone}></MyProjectsPanel>
-              </motion.div> 
-            }
-          </AnimatePresence>
+        <simulationContext.Provider value={[toggleSpecialEffectHelper, enableSpecialEffect]}>
           
 
-          <Canvas 
-          className="w-full h-screen z-0 relative overflow-x-hidden"
-          linear={true}
-          >
-
-            <Suspense> 
-            <color attach="background" args={["#53545c"]} />
-
-
-            <ambientLight  intensity={2} color={"#e8eafa"}></ambientLight>
-            <pointLight  position={[2, 1, 1]} intensity={9} decay={0.2} color={"#89a2b3"} ></pointLight>
-            <pointLight  position={[-2, 0.2, -1]} intensity={2} decay={0.5}  color={"#fff1e6"} ></pointLight>
-
-            <Home_scene ></Home_scene>
-
-            <PerspectiveCamera  makeDefault position={CAMERA_POSITION} fov={32} onUpdate={(self) => self.lookAt(...LOOK_AT_COORDINATE)}> </PerspectiveCamera>
-
-            /* 
-                The effectcomposer component may cause performance issue
-                */
-
-            {enableSpecialEffect && 
-             <EffectComposer>
-              <Glitch
-                  delay={[1.5, 13.5]} // min and max glitch delay
-                  duration={[0.6, 1.0]} // min and max glitch duration
-                  strength={[0.005, 0.01]} // min and max glitch strength
-                  mode={GlitchMode.SPORADIC} // glitch mode
-                  active // turn on/off the effect (switches between "mode" prop and GlitchMode.DISABLED)
-                  ratio={0.25} // Threshold for strong glitches, 0 - no weak glitches, 1 - no strong glitches.
-                />
-              <Bloom luminanceThreshold={0} luminanceSmoothing={0.6} height={100} intensity={0.2} />
-              <Vignette eskil={false} offset={.1} darkness={0.8} />
-             </EffectComposer>
+            <div className='w-full h-screen overflow-hidden'>
+            <SimulationPageOverlay></SimulationPageOverlay>
+              
             
-            }
+              <AnimatePresence>
+                {currentActivatedPanel == "about" && 
+                  <motion.div
+                  initial={{ x: -200, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: -200, opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  class='z-30 absolute w-full h-full overflow-hidden'
+                  >
+                    <AboutMePanel closePanelCallbackFunction={closePanel}></AboutMePanel>
+                  </motion.div> 
+                }
+                
+                
+                {currentActivatedPanel == "project" && 
+                
+                  <motion.div
+                  initial={{ x: -200, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: -200, opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  class='z-30 absolute w-full h-full overflow-hidden'
+                  onAnimationComplete={() => setIsProjectPanelParentAnimationDone(true)}
+                  >
+                    <MyProjectsPanel closePanelCallbackFunction={closePanel}  isParentAnimationDone={isProjectPanelParentAnimationDone}></MyProjectsPanel>
+                  </motion.div> 
+                }
+              </AnimatePresence>
+              
+              <Canvas 
+              className="w-full h-screen z-0 relative overflow-x-hidden"
+              linear={true}
+              >
+                 {/*<Suspense fallback={<LoadingPage></LoadingPage>}> */}
 
-            <Rig></Rig>
+              
+                <color attach="background" args={["#53545c"]} />
 
-            <InteractableIndicator position={[-1.3, 0.6, -1.7]} onclickCallBack={() => interactableClicked("project")}></InteractableIndicator>
-            <InteractableIndicator position={[-0.5, -0.3, 0.2]} onclickCallBack={() => interactableClicked("about")}></InteractableIndicator>
 
-          </Suspense>
-          </Canvas>
-        </div>
-      </simulationContext.Provider>
+                <ambientLight  intensity={2} color={"#e8eafa"}></ambientLight>
+                <pointLight  position={[2, 1, 1]} intensity={9} decay={0.2} color={"#89a2b3"} ></pointLight>
+                <pointLight  position={[-2, 0.2, -1]} intensity={2} decay={0.5}  color={"#fff1e6"} ></pointLight>
+
+                <Home_scene finishedLoadingCallback={setIsLoadingHelperScene}></Home_scene>
+
+                <PerspectiveCamera  makeDefault position={CAMERA_POSITION} fov={32} onUpdate={(self) => self.lookAt(...LOOK_AT_COORDINATE)}> </PerspectiveCamera>
+
+                /* 
+                    The effectcomposer component may cause performance issue
+                    */
+
+                {enableSpecialEffect && 
+                <EffectComposer>
+                  <Glitch
+                      delay={[1.5, 13.5]} // min and max glitch delay
+                      duration={[0.6, 1.0]} // min and max glitch duration
+                      strength={[0.005, 0.01]} // min and max glitch strength
+                      mode={GlitchMode.SPORADIC} // glitch mode
+                      active // turn on/off the effect (switches between "mode" prop and GlitchMode.DISABLED)
+                      ratio={0.25} // Threshold for strong glitches, 0 - no weak glitches, 1 - no strong glitches.
+                    />
+                  <Bloom luminanceThreshold={0} luminanceSmoothing={0.6} height={100} intensity={0.2} />
+                  <Vignette eskil={false} offset={.1} darkness={0.8} />
+                </EffectComposer>
+                
+                }
+
+                <Rig></Rig>
+
+                <InteractableIndicator position={[-1.3, 0.6, -1.7]} onclickCallBack={() => interactableClicked("project")}></InteractableIndicator>
+                <InteractableIndicator position={[-0.5, -0.3, 0.2]} onclickCallBack={() => interactableClicked("about")}></InteractableIndicator>
+
+                
+                {/*</Suspense>*/}
+              </Canvas>
+            </div>
+            </simulationContext.Provider>
+     
     )
   }
   

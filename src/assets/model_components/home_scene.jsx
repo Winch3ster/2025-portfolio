@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { useAnimations, useGLTF } from '@react-three/drei'
 
 //position={[1,-5.5,-93]
-export const Home_scene = ({...props}) => {
+export const Home_scene = ({finishedLoadingCallback,...props}) => {
     const group = useRef()
     
     const { nodes, materials,animations } = useGLTF(
@@ -13,13 +13,16 @@ export const Home_scene = ({...props}) => {
 
     
     useEffect(() => {
+
+        finishedLoadingCallback();
         const animationList = Object.keys(actions);
         //actions["bodyAction"].play();
         animationList.forEach(animation => {
             actions[animation].play();
         });
         
-      });
+      },[]);
+      
       return (
         <group ref={group} {...props} dispose={null} position={[1,-5.5,-93]}>
           <group name="Scene">

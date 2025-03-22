@@ -1,23 +1,17 @@
-import { createContext } from 'react';
-import LandingPage from './pages/landing_page.jsx';
-import PlaygroundPage from './pages/playground.jsx';
-import SimulationPage from './pages/simulation_page.jsx';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createContext, lazy, Suspense } from 'react';
+import { BrowserRouter,Router, Routes, Route, createBrowserRouter, RouterProvider } from "react-router-dom";
+import LoadingPage from './pages/loading_page.jsx';
 
 
 function App() {
-
-  
   return (
-  
-
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage/>} />
-        <Route path="/simulation" element={<SimulationPage/>} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<LoadingPage pageName={"landing"}/>} />
+          <Route path="/simulation" element={<LoadingPage  pageName={"simulation"} />} />
+        </Routes>
     </BrowserRouter>
-  
+    
   )
 }
 

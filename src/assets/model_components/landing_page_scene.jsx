@@ -1,11 +1,17 @@
 import {  useGLTF } from '@react-three/drei'
+import { useEffect } from 'react'
 
 //position={[1,-5.5,-93]
-export const LandingPageScene = ({...props}) => {
+export const LandingPageScene = ({finishedLoadingCallback,...props}) => {
 
 
-    const { nodes, materials } = useGLTF('./src/assets/models/00Raiser_18_march_landing_page.glb')
-  return (
+    const { nodes, materials } = useGLTF('./src/assets/models/00Raiser_18_march_landing_page_v2.glb')
+
+    useEffect(() => {
+      finishedLoadingCallback();
+    }, []);
+  
+    return (
     <group {...props} dispose={null} position={[0,-55,-35]}>
       <mesh
         
@@ -675,13 +681,6 @@ export const LandingPageScene = ({...props}) => {
           material={materials.dark_gray}
         />
       </group>
-      <mesh
-        
-        receiveShadow
-        geometry={nodes['leg-7'].geometry}
-        material={materials.green}
-        position={[-1.114, 1.756, -0.582]}
-      />
       <group position={[56.294, 1.835, -48.702]}>
         <mesh
           
@@ -824,32 +823,6 @@ export const LandingPageScene = ({...props}) => {
         position={[7.489, -16.647, 51.116]}
         rotation={[-0.109, 0.722, 0.428]}
       />
-      <group position={[-20.244, -26.599, 48.874]} rotation={[-0.109, 0.722, 0.428]}>
-        <mesh
-          
-          receiveShadow
-          geometry={nodes['00Raiser_1-repaired057'].geometry}
-          material={materials.main_blue}
-        />
-        <mesh
-          
-          receiveShadow
-          geometry={nodes['00Raiser_1-repaired057_1'].geometry}
-          material={materials.white}
-        />
-        <mesh
-          
-          receiveShadow
-          geometry={nodes['00Raiser_1-repaired057_2'].geometry}
-          material={materials.black}
-        />
-        <mesh
-          
-          receiveShadow
-          geometry={nodes['00Raiser_1-repaired057_3'].geometry}
-          material={materials.dark_gray}
-        />
-      </group>
       <group position={[-85.73, -39.543, 5.53]} rotation={[-0.109, 0.722, 0.428]}>
         <mesh
           
@@ -902,46 +875,6 @@ export const LandingPageScene = ({...props}) => {
           receiveShadow
           geometry={nodes['00Raiser_1-repaired105_1'].geometry}
           material={materials.dark_gray}
-        />
-      </group>
-      <group position={[6.584, -28.326, 110.185]} rotation={[-0.109, 0.722, 0.428]}>
-        <mesh
-          
-          receiveShadow
-          geometry={nodes['00Raiser_1-repaired116'].geometry}
-          material={materials.white}
-        />
-        <mesh
-          
-          receiveShadow
-          geometry={nodes['00Raiser_1-repaired116_1'].geometry}
-          material={materials.main_blue}
-        />
-        <mesh
-          
-          receiveShadow
-          geometry={nodes['00Raiser_1-repaired116_2'].geometry}
-          material={materials.black}
-        />
-        <mesh
-          
-          receiveShadow
-          geometry={nodes['00Raiser_1-repaired116_3'].geometry}
-          material={materials.dark_gray}
-        />
-      </group>
-      <group position={[-1.52, 0.739, 114.882]} rotation={[-0.109, 0.722, 0.428]}>
-        <mesh
-          
-          receiveShadow
-          geometry={nodes['00Raiser_1-repaired117'].geometry}
-          material={materials.main_blue}
-        />
-        <mesh
-          
-          receiveShadow
-          geometry={nodes['00Raiser_1-repaired117_1'].geometry}
-          material={materials.white}
         />
       </group>
       <mesh
@@ -1113,32 +1046,6 @@ export const LandingPageScene = ({...props}) => {
           material={materials.gray}
         />
       </group>
-      <group position={[0, 43.26, -16.484]} rotation={[0.23, 0, 0]}>
-        <mesh
-          
-          receiveShadow
-          geometry={nodes.Plane003.geometry}
-          material={materials.dark_gray}
-        />
-        <mesh
-          
-          receiveShadow
-          geometry={nodes.Plane003_1.geometry}
-          material={materials.white}
-        />
-        <mesh
-          
-          receiveShadow
-          geometry={nodes.Plane003_2.geometry}
-          material={materials.main_blue}
-        />
-        <mesh
-          
-          receiveShadow
-          geometry={nodes.Plane003_3.geometry}
-          material={materials.gray}
-        />
-      </group>
       <mesh
         
         receiveShadow
@@ -1170,6 +1077,7 @@ export const LandingPageScene = ({...props}) => {
         material={materials.red}
       />
     </group>
+    
   )
 
 

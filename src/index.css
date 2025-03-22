@@ -391,21 +391,6 @@ body{
   position: absolute;
 }
 
-@media (max-width: 1024px) {
-  .about-me-panel-config {
-    width: 75%;
-    height: 70%;
-  }
-}
-
-
-/* Apply styles for screens smaller than Tailwind's `md` (768px) */
-@media (max-width: 767px) {
-  .about-me-panel-config {
-    width: 90%;
-    height: 90%;
-  }
-}
 
 
 .profile-pic-container{
@@ -550,3 +535,27 @@ body{
   border-radius: 10px;
   background-color: white;
 }
+
+
+
+
+@media (max-width: 1024px) {
+  .about-me-panel-config {
+    width: 75%;
+    height: 70%;
+  }
+}
+
+
+/* Apply styles for screens smaller than Tailwind's `md` (768px) */
+@media (max-width: 767px) {
+  .about-me-panel-config {
+    width: 90%;
+    height: 90%;
+  }
+
+  .individual-icon{
+    height: 22px;
+  }
+}
+

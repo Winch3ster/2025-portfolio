@@ -24,7 +24,7 @@ const LandingPageNavigationBar = () => {
                 </a>
 
                 <a href="https://drive.google.com/file/d/1zrB5VlNme9UOvUR8z0-qA09pIAMayWJd/view?usp=sharing"  target="_blank">
-                    <div class="standard-button text-white bg-transparent border-2 border-white focus:outline-none  hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-6 py-1 cursor-pointer">{textBundle["common.resume"]}</div>                   
+                    <div class="standard-button text-white bg-transparent border-2 border-white focus:outline-none  hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm md:px-6 px-4 py-1 cursor-pointer">{textBundle["common.resume"]}</div>                   
                 </a>
             </div>
 

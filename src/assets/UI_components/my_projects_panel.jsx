@@ -55,7 +55,7 @@ const MyProjectsPanel = ({closePanelCallbackFunction, isParentAnimationDone}) =>
     return(
         <div>
             <div class='z-20 absolute w-full h-full bg-black opacity-30'></div>
-            <div class="absolute right-10 top-10 about-me-panel-config md:w-3/4 md:h-3/4 w-full h-9/12 rounded-2xl pt-5">   
+            <div class="absolute right-30 top-30 about-me-panel-config md:w-3/4 md:h-3/4 w-full h-9/12 rounded-2xl pt-5">   
               <div class='panel-close' onClick={closePanelCallbackFunction} >
                 <img class='h-4 w-4'  src={leftChevron} alt="" />
                 <div>{textBundle["common.back"]}</div>

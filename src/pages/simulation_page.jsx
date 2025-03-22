@@ -44,9 +44,11 @@ function Rig({currentActivatedPanel}) {
 
     if(currentActivatedPanel == "about"){
       newPosition = new Vector3(xOffset, -0.1 + yOffset, 2.86 + xOffset);
+    }else if(currentActivatedPanel == "project"){
+      newPosition = new Vector3(-2.56 + xOffset, 0.78 + yOffset, 0.23 + xOffset);
+      lookAtPosition = new Vector3(2, 0.6, -1.5);
     }
-
-
+    console.log(camera.position)
     camera.position.lerp(newPosition, 0.05)
     camera.lookAt(lookAtPosition);
 

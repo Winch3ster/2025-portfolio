@@ -1,10 +1,33 @@
 
-import { lazy, useEffect, useState } from "react";
+import { lazy, use, useContext, useEffect, useState } from "react";
 import textBundle from "../msgbundle";
+
+import {appContext, MINIMUM_SCREEN_WIDTH} from '../context';
+import PleaseRotateDevicePanel from "../assets/UI_components/please_rotate_device";
+
 
 const LoadingPage = ({pageName}) => {
 
+    const [isTouchDevice, firstTimeLanding] = useContext(appContext);
+    const [matchLayoutCriteria, setmatchLayoutCriteria] = useState(true); 
+
+    const checkForMatchingCriteria = () => {
+        const isTouchDevice = window.matchMedia("(any-pointer: coarse)").matches;
+        const isPortrait = window.innerHeight > window.innerWidth;
+    
+        if (isTouchDevice && isPortrait && window.innerWidth < MINIMUM_SCREEN_WIDTH) {
+            setmatchLayoutCriteria(false);
+    
+        } else if (isTouchDevice && !isPortrait) {
+            setmatchLayoutCriteria(true);
+        
+        } else {
+            setmatchLayoutCriteria(true); //For computers, set to true
+        }
+    };
+
     const [isLoading, setIsLoading] = useState(true);
+    
     function setIsLoadingHelper(){
         setIsLoading(false);
     }
@@ -18,12 +41,16 @@ const LoadingPage = ({pageName}) => {
             const LazyLandingPage = lazy(() => import("./simulation_page"));
             setPageComponent(() => LazyLandingPage);
         }
+
+        window.addEventListener("resize", checkForMatchingCriteria); // Listen for screen size changes
+        checkForMatchingCriteria();
+        return () => window.removeEventListener("resize", checkForMatchingCriteria); // Cleanup
        
+    }, [matchLayoutCriteria]);
 
-    }, []);
 
+    return matchLayoutCriteria ? (
 
-    return (
         <div className="relative w-full h-full">
             {isLoading && (
                 <div className="absolute top-0 left-0 flex justify-center items-center h-full w-full standard-dark-gray z-50">
@@ -39,6 +66,8 @@ const LoadingPage = ({pageName}) => {
                 <PageComponent loadingCallback={setIsLoadingHelper} />
             )}
         </div>
+    ) : (
+        <PleaseRotateDevicePanel></PleaseRotateDevicePanel>
     );
 };
 

@@ -26,6 +26,7 @@ const textBundle = {
     "notification.effect.composer":"Click this icon in the quick navigation menu to toggle effect composure on or off. Turning off for better performance/FPS.",
     "notification.pc.more.imersive":"Use computers for a more immersive experience.",
     "loading.asset": "Loading asset, might take a while...",
+    "please.rotate.device": "Please rotate your device to landscape mode.",
   };
 
 

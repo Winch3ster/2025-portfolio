@@ -528,3 +528,10 @@ body{
   100% {transform:translate(0)}
 }
 
+.rotate-phone{
+  width: 50px;
+  height: 100px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 2px solid white;
+}

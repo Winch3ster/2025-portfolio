@@ -48,7 +48,6 @@ function Rig({currentActivatedPanel}) {
       newPosition = new Vector3(-2.56 + xOffset, 0.78 + yOffset, 0.23 + xOffset);
       lookAtPosition = new Vector3(2, 0.6, -1.5);
     }
-    console.log(camera.position)
     camera.position.lerp(newPosition, 0.05)
     camera.lookAt(lookAtPosition);
 
@@ -85,7 +84,6 @@ function SimulationPage({loadingCallback}) {
     //"about" --> about me
     //"project" --> my projects
     const interactableClicked = (panel) =>{
-      console.log("interactableClicked is clicked: " +panel)
       switch(panel) {
         case "about":
           //open about me panel  

@@ -13,7 +13,6 @@ import { useContext, useState } from 'react'
 import { simulationContext } from '../../context'
 
 const QuickNavComponent = ({marginX, marginY, content, link, specialEffectCallback, isHomeButton}) => {
-        console.log(specialEffectCallback)
     
 
         return(

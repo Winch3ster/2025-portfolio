@@ -185,8 +185,8 @@ function SimulationPage({loadingCallback}) {
 
                  {/*<Rig></Rig> */}
                  <Rig currentActivatedPanel={currentActivatedPanel}></Rig>
-                <InteractableIndicator position={[-1.3, 0.6, -1.7]} onclickCallBack={() => interactableClicked("project")}></InteractableIndicator>
-                <InteractableIndicator position={[-0.5, -0.3, 0.2]} onclickCallBack={() => interactableClicked("about")}></InteractableIndicator>
+                <InteractableIndicator position={[-1.3, 0.6, -1.7]} onclickCallBack={() => interactableClicked("project")} buttonContent={"Project"}></InteractableIndicator>
+                <InteractableIndicator position={[-0.5, -0.3, 0.2]} onclickCallBack={() => interactableClicked("about")} buttonContent={"About"}></InteractableIndicator>
 
                 {/*</Suspense>*/}
               </Canvas>

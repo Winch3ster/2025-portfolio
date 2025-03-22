@@ -15,7 +15,7 @@ const SimulationTitle = () => {
 
 
     return (
-        <div class={`absolute z-20  ${isMobile ? "left-3 bottom-3 py-5 w-6/12 " : "left-20 bottom-0 mr-20 mb-20 py-10 w-1/3"} px-5 w-1/3`}>
+        <div class={`absolute z-20  ${isMobile ? "left-3 bottom-3 pb-5 w-6/12 " : "left-20 bottom-0 mr-20 mb-20 pb-10 w-1/3"} px-5 w-1/3 `}>
 
             <div class={` ${isMobile ? "text-xs":"text-base"} text-start text-white tracking-wide`}>{textBundle["simulation.page.subtitle"]}</div>
             

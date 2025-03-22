@@ -115,7 +115,7 @@ body{
 
 
 
-.interactable-button{
+.interactable-button, .interactable-button-mobile{
   width: 60px;
   height: 30px;
   border-radius: 15px;
@@ -136,8 +136,16 @@ body{
   font-size: 10px;
 }
 
+.interactable-button-mobile{
+  width: 80px;
+  height: 28px;
+  font-size: 8px;
+}
 
-.interactable-button::before, .interactable-button::after, .interactable-button div::before, .interactable-button div::after {
+
+.interactable-button::before, .interactable-button::after, .interactable-button div::before, .interactable-button div::after,
+.interactable-button-mobile::before, .interactable-button-mobile::after, .interactable-button-mobile div::before, .interactable-button-mobile div::after
+{
   content: "";
   position: absolute;
   background: rgba(255, 255, 255, 0.8); /* White lines */
@@ -223,6 +231,83 @@ body{
 
 
 
+.interactable-button:hover div::after{
+  width: 2px;
+  height: 6px;
+  bottom: 6px;
+  right:  18px;
+  background: rgba(255, 255, 255, 0.9); /* White lines */
+
+}
+
+.interactable-button:hover::before{
+  width: 6px;
+  height: 2px;
+  top: 6px;
+  left: 18px;
+}
+
+/*Top left vertical line*/
+.interactable-button:hover div::before{
+  width: 2px;
+  height: 6px;
+  top: 6px;
+  left:  18px;
+  background: rgba(255, 255, 255, 0.5); /* White lines */
+}
+
+
+
+/*Bottom right horizontal line*/
+.interactable-button:hover::after{
+  width: 6px;
+  height: 2px;
+  bottom: 6px;
+  right:  18px;
+}
+
+
+
+
+/* FOR MOBILE VIEW, NO HOVER EFFECT */
+/*Bottom right horizontal line*/
+.interactable-button-mobile div::after{
+  width: 2px;
+  height: 6px;
+  bottom: 4px;
+  right:  12px;
+  background: rgba(255, 255, 255, 0.9); /* White lines */
+
+}
+/*Bottom right horizontal line*/
+.interactable-button-mobile::after{
+  width: 6px;
+  height: 2px;
+  bottom: 4px;
+  right:  12px;
+  background: rgba(255, 255, 255, 0.9); /* White lines */
+}
+
+/*Top left vertical line*/
+.interactable-button-mobile  div::before{
+  width: 2px;
+  height: 6px;
+  top: 4px;
+  left:  12px;
+  background: rgba(255, 255, 255, 0.9); /* White lines */
+}
+
+.interactable-button-mobile::before{
+  width: 6px;
+  height: 2px;
+  top: 4px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.9); /* White lines */
+}
+
+
+
+
 
 
 
@@ -246,6 +331,13 @@ body{
   white-space: nowrap;
   transition-delay: 0.3s;
   transform: translateX(0px);
+}
+
+
+.interactable-button-mobile-span-visible span{
+  visibility: visible;
+  opacity: 1;
+  white-space: nowrap;
 }
 
 

@@ -3,37 +3,39 @@ import leftChevron from '../icons/left-chevron.png'
 import profile from '../profile.png'
 
 const AboutMePanel = ({closePanelCallbackFunction}) => {
+    const isMobile = window.matchMedia("(any-pointer: coarse)").matches &&  window.innerHeight < 500;
 
     return(
         <div>
             <div class='absolute w-full h-full bg-black opacity-30 z-30'></div>
-            <div class="absolute right-30 top-30 about-me-panel-config w-3/4 h-1/2 rounded-2xl pt-5">
+
+            <div class={`absolute ${isMobile ? "right-10 top-10 about-me-panel-config-mobile text-sm" : "right-30 top-30 about-me-panel-config text-base" } rounded-2xl pt-5`}>
        
                 <div class='panel-close' onClick={closePanelCallbackFunction}>
                     <img class='h-4 w-4'  src={leftChevron} alt="" />
                     <div>{textBundle["common.back"]}</div>
                 </div>
-                <div class='h-4'></div>
 
-                <div class="flex px-8 py-14 justify-evenly">
-                    <div class="flex justify-center items-center">
+                <div class={isMobile ? 'h-0' : 'h-4'}></div>
 
-                        <div class="-mt-5">
-                            <div class="  profile-pic-container">
-                                <img src={profile} alt="" />
-                            </div>
-                            <div class="h-5"></div>
-                            <div class='ml-1'>
-                                <p>{textBundle["about.me.panel.name"]}</p>
-                                <p>{textBundle["about.me.panel.age"]}</p>
-                                <p>{textBundle["about.me.panel.based"]}</p>
-                            </div>
+                <div class={`flex px-8 ${isMobile ? " py-10":" py-14"} justify-evenly`}>
+                    <div class="flex flex-col justify-center items-center -mt-5">
+
+                        <div class={isMobile ? "profile-pic-container-mobile" : "profile-pic-container"}>
+                            <img src={profile} alt="" />
+                        </div>
+                        <div class="h-5"></div>
+                        <div class='ml-1'>
+                            <p>{textBundle["about.me.panel.name"]}</p>
+                            <p>{textBundle["about.me.panel.age"]}</p>
+                            <p>{textBundle["about.me.panel.based"]}</p>
                         </div>
 
-                        </div>
-                        <div class="w-7"></div>
+                    </div>
 
-                        <div class=" w-2/3 flex justify-center items-center">
+                    <div class="w-7"></div>
+
+                    <div class=" w-2/3 flex justify-center items-center">
                         <div class="-mt-10">
                             <div class="standard-dark-gray w-16 h-2 opacity-60 about-me-decor"></div>
                             <div class="h-4"></div>

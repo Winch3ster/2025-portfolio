@@ -488,6 +488,13 @@ body{
   position: absolute;
 }
 
+.about-me-panel-config-mobile{
+  max-width: 85vw;
+  max-height: 80vh;
+  background-color: rgb(243, 242, 247);
+  z-index: 30;
+  position: absolute;
+}
 
 
 .profile-pic-container{
@@ -495,6 +502,12 @@ body{
   height: 160px;
   background-color: transparent;
 }
+.profile-pic-container-mobile{
+  width: 120px;
+  height: 120px;
+  background-color: transparent;
+}
+
 
 
 

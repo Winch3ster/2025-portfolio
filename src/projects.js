@@ -5,7 +5,7 @@ import preInterview from './assets/projects/intergence.jpg'
 import gasStationSimulation from './assets/projects/brokerPetrol.jpg'
 import bitsey from './assets/projects/bitsey.jpg'
 import forza from './assets/projects/2d_forza.jpg'
-
+import drawingApplication from './assets/projects/drawingApplication.jpg'
 
 const projects = [
     {
@@ -53,7 +53,7 @@ const projects = [
         companyName: "Intergence (Pampisford, England)",
         name:"Pre-Interview candidate selection system",
         type: "Industry-partnered assignment",
-        description: "An application system developed using Vaadin framework to streamline the hiring process by pre-screening candidates with a series of questions set by the human resource team. The system should allow for customization of question types and provide a way to score candidate responses to help determine which candidates should proceed to further interviews.",
+        description: "An application system developed using Vaadin framework to streamline the hiring process by pre-screening candidates with a series of questions set by the human resource team. The system allows customization of question types and provide a way to score candidate responses.",
         githubLink: "https://github.com/Winch3ster/Broker-Petrol",
         image: preInterview,
         isVisible:false, 
@@ -101,6 +101,19 @@ const projects = [
         isVisible:false, 
         isBeingFocused:false,
         tech: ["Java Swing", "Java Networking"] 
+    },
+    {
+        id:7,
+        companyAttached : false,
+        companyName: "",
+        name:"Drawing Application",
+        type: "Software Assignment",
+        description: "A simple drawing application similar to Microsoft Paint that allow user to create simple illustrations. This program also allow user to export the illustration crreated as an image.",
+        githubLink: "https://github.com/Winch3ster/Broker-Petrol",
+        image: drawingApplication,
+        isVisible:false, 
+        isBeingFocused:false,
+        tech: ["Window Forms", "C#"] 
     },
     
 ]

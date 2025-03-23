@@ -10,28 +10,42 @@ import SimulationPageOverlay from "../assets/UI_components/simulation_page_overl
 import AboutMePanel from "../assets/UI_components/about_me_panel";
 import MyProjectsPanel from "../assets/UI_components/my_projects_panel";
 import { AnimatePresence, motion } from "motion/react";
+import { simulationContext } from "../context";
 
 
 const CAMERA_POSITION = [-2.5, 0, 3.3];
 const LOOK_AT_COORDINATE = [1.3, 0.6, -3.8];
 
-import { simulationContext } from "../context";
-
+const newPosition = new Vector3();
+const lookAtPosition = new Vector3();
+const isMobile = window.matchMedia("(any-pointer: coarse)").matches &&  window.innerHeight < 500;
 
 function Rig({currentActivatedPanel}) {
   const { camera } = useThree()
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
+  const handleMouseMovement = (event) => {
+    const x = (event.clientX / window.innerWidth) * 2 - 1;
+    const y = -(event.clientY / window.innerHeight) * 2 + 1;
+    setMouse({ x, y });
+  };
+
+  const handleTouchMovement = (event) => {
+    const touches = event.touches[0];
+    const x = (touches.clientX / window.innerWidth) * 2 - 1;
+    const y = -(touches.clientY / window.innerHeight) * 2 + 1;
+    setMouse({ x, y });
+  };
+
+
   useEffect(() => {
-    const handleMouseMove = (event) => {
-      const x = (event.clientX / window.innerWidth) * 2 - 1;
-      const y = -(event.clientY / window.innerHeight) * 2 + 1;
-      setMouse({ x, y });
-
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    if(isMobile){
+      window.addEventListener("touchmove", handleTouchMovement);
+      return () => window.removeEventListener("touchmove", handleTouchMovement);
+    }else{
+      window.addEventListener("mousemove", handleMouseMovement);
+      return () => window.removeEventListener("mousemove", handleMouseMovement);
+    }
   }, []);
 
 
@@ -39,16 +53,20 @@ function Rig({currentActivatedPanel}) {
     const xOffset = mouse.x * 0.3;
     const yOffset =  mouse.y*0.2;
 
-    var newPosition = new Vector3(-2.5 + xOffset, 0 + yOffset, 3.3 + xOffset);
-    var lookAtPosition = new Vector3(1.3, 0.6, -3.8);
+    // Default camera position & lookAt target
+    newPosition.set(-2.5 + xOffset, 0 + yOffset, 3.3 + xOffset);
+    lookAtPosition.set(1.3, 0.6, -3.8);
 
-    if(currentActivatedPanel == "about"){
-      newPosition = new Vector3(xOffset, -0.1 + yOffset, 2.86 + xOffset);
-    }else if(currentActivatedPanel == "project"){
-      newPosition = new Vector3(-2.56 + xOffset, 0.78 + yOffset, 0.23 + xOffset);
-      lookAtPosition = new Vector3(2, 0.6, -1.5);
+    // Adjust position based on the active panel
+    if (currentActivatedPanel === "about") {
+      newPosition.set(xOffset, -0.1 + yOffset, 2.86 + xOffset);
+    } else if (currentActivatedPanel === "project") {
+      newPosition.set(-2.56 + xOffset, 0.78 + yOffset, 0.23 + xOffset);
+      lookAtPosition.set(2, 0.6, -1.5);
     }
-    camera.position.lerp(newPosition, 0.05)
+
+    // Smooth interpolation
+    camera.position.lerp(newPosition, 0.05);
     camera.lookAt(lookAtPosition);
 
   })
@@ -183,8 +201,8 @@ function SimulationPage({loadingCallback}) {
                 
                 }
 
-                 {/*<Rig></Rig> */}
-                 <Rig currentActivatedPanel={currentActivatedPanel}></Rig>
+                 {/*<Rig currentActivatedPanel={currentActivatedPanel}></Rig> */}
+                <Rig currentActivatedPanel={currentActivatedPanel}></Rig>
                 <InteractableIndicator position={[-1.3, 0.6, -1.7]} onclickCallBack={() => interactableClicked("project")} buttonContent={"Project"}></InteractableIndicator>
                 <InteractableIndicator position={[-0.5, -0.3, 0.2]} onclickCallBack={() => interactableClicked("about")} buttonContent={"About"}></InteractableIndicator>
 

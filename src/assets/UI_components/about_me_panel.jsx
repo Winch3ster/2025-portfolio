@@ -9,7 +9,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
         <div>
             <div class='absolute w-full h-full bg-black opacity-30 z-30'></div>
 
-            <div class={`absolute ${isMobile ? "right-10 top-10 about-me-panel-config-mobile text-sm" : "right-30 top-30 about-me-panel-config text-base" } rounded-2xl pt-5`}>
+            <div class={`absolute ${isMobile ? "right-8 top-8 about-me-panel-config-mobile text-sm" : "right-30 top-30 about-me-panel-config text-base" } rounded-2xl pt-5`}>
        
                 <div class='panel-close' onClick={closePanelCallbackFunction}>
                     <img class='h-4 w-4'  src={leftChevron} alt="" />
@@ -45,7 +45,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                             <p>{textBundle["about.me.panel.description.2"]}</p>
                             <br></br>
                             <p class='font-bold'>{textBundle["about.me.panel.ps"]}</p>
-                            <div class="h-5"></div>
+                            {isMobile ? <div class="h-1"></div>: <div class="h-5"></div>}
 
                             <div class="flex">
                                 <a href="https://www.instagram.com/king_st0ne/" target="_blank">

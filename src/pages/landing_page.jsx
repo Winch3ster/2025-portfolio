@@ -9,25 +9,49 @@ import LandingPageNavigationBar from "../assets/UI_components/landing_page_nav_b
 import LandingPageOverlay from "../assets/UI_components/landing_page_overlay";
 import { LandingPageScene } from "../assets/model_components/landing_page_scene";
 
+const isMobile = window.matchMedia("(any-pointer: coarse)").matches &&  window.innerHeight < 500;
+const lookAtTarget = new Vector3(-5, 3, -37);
+const targetPosition = new Vector3();
 
 function Rig() {
 
+  const { camera } = useThree()
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
-  const [vec] = useState(() => new Vector3)
+  const handleTouchMovement = (event) => {
+    const touches = event.touches[0];
+    const x = (touches.clientX / window.innerWidth) * 2 - 1;
+    const y = -(touches.clientY / window.innerHeight) * 2 + 1;
+    setMouse({ x, y });
+  };
+  const handleMouseMovement = (event) => {
+    const x = (event.clientX / window.innerWidth) * 2 - 1;
+    const y = -(event.clientY / window.innerHeight) * 2 + 1;
+    setMouse({ x, y });
+  };
 
-  
+  useEffect(() => {
+    if(isMobile){
+      window.addEventListener("touchmove", handleTouchMovement);
+      return () => window.removeEventListener("touchmove", handleTouchMovement);
+    }else{
+      window.addEventListener("mousemove", handleMouseMovement);
+      return () => window.removeEventListener("mousemove", handleMouseMovement);
+    }
+  }, [])
 
-  const { camera, mouse } = useThree()
-  const defaultCameraPosition =camera.position;
-  vec.set(defaultCameraPosition);
+  useFrame(() => {
+    targetPosition.set(
+      -40 + mouse.x * 8,
+      7 + mouse.y * 8,
+      10.26 + mouse.x * 10
+    );
 
-
- useFrame(() => {
-    camera.position.lerp(vec.set(-40 + (mouse.x * 8), 7 + (mouse.y * 8), 10.26 + (mouse.x * 10)), 0.05)
-    camera.lookAt(...[-5,3 ,-37]);
+    camera.position.lerp(targetPosition, 0.05);
+    camera.lookAt(lookAtTarget);
   })  
 
-
+//...[-5,3 ,-37]
 
   //return <CameraShake maxYaw={0.01} maxPitch={0.01} maxRoll={0.01} yawFrequency={0.5} pitchFrequency={0.5} rollFrequency={0.4} />
 }
@@ -55,7 +79,7 @@ const LandingPage = ({loadingCallback}) => {
         
           <Canvas>
             <pointLight position={[2, 5, 1]} intensity={1} decay={0.2} color={"#a5b9c7"} />
-            <PerspectiveCamera makeDefault position={[-40, 7, 10.26]} fov={40} rotation={[-0.13, -0.609, -0.077]} zoom={1.4} onUpdate={(self) => self.lookAt(-5, 3, -37)} />
+            <PerspectiveCamera makeDefault position={[-40, 7, 10.26]} fov={40} rotation={[-0.13, -0.609, -0.077]} zoom={1.4} onUpdate={(self) => self.lookAt(lookAtTarget)} />
             
             <LandingPageScene finishedLoadingCallback={setIsLoadingHelperScene} />  
 

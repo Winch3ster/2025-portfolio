@@ -130,7 +130,7 @@ const MyProjectsPanel = ({closePanelCallbackFunction, isParentAnimationDone}) =>
     return(
         <div>
             <div class='z-20 absolute w-full h-full bg-black opacity-30'></div>
-            <div class={`absolute ${isMobile ? "right-10 top-10 about-me-panel-config-mobile text-sm" : " right-30 top-30 about-me-panel-config w-3/4 h-3/4 text-base"} rounded-2xl pt-5`}>   
+            <div class={`absolute ${isMobile ? "right-8 top-8 about-me-panel-config-mobile text-sm" : " right-30 top-30 about-me-panel-config w-3/4 h-3/4 text-base"} rounded-2xl pt-5`}>   
               
             <div class='panel-close' onClick={closePanelCallbackFunction} >
               <img class='h-4 w-4'  src={leftChevron} alt="" />

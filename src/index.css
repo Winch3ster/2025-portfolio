@@ -489,11 +489,16 @@ body{
 }
 
 .about-me-panel-config-mobile{
-  max-width: 85vw;
-  max-height: 80vh;
+  width: 85vw;
+  height: 80vh;
   background-color: rgb(243, 242, 247);
   z-index: 30;
   position: absolute;
+}
+
+.project-details-panel-mobile{
+  max-width: 62%;
+  margin-bottom: 20px;
 }
 
 
@@ -661,7 +666,6 @@ body{
   border-radius: 10px;
   background-color: white;
 }
-
 
 
 

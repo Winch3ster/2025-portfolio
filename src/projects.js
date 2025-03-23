@@ -17,19 +17,22 @@ const projects = [
         githubLink: "",
         image: fsm,
         isVisible:true, 
-        isBeingFocused:true 
+        isBeingFocused:true,
+        tech: ["Flutter", "IOS"] 
     },
     {
         id:1,
         companyAttached : false,
         companyName: "",
         name:"Wav2Vec: A Potential Automation for Facial lip-syncing Animation",
-        type: "FYP",
-        description: "This study explores the use of deep learning techniques, specifically the Wav2Vec model, to automate the generation of facial animations from audio inputs. By leveraging a fine-tuned phoneme recognition model and the blendshapes technique, it maps audio signals to corresponding viseme sequences in real time, enabling seamless lip-syncing. To demonstrate the results, an AI model is fine-tuned, and a Unity-based program is developed.",
+        isFYP: true,
+        description: "This study explores the use of deep learning techniques, specifically the Wav2Vec model, to automate the generation of facial animations from audio inputs. By leveraging a fine-tuned phoneme recognition model and the blendshapes technique, it maps audio signals to corresponding viseme sequences in real time, enabling seamless lip-syncing.",
+        description2: "To demonstrate the results, Meta's Wav2Vec AI model was fine-tuned using TIMIT dataset, and a Unity-based program is developed.",
         githubLink: "",
         image: fyp,
         isVisible:true, 
-        isBeingFocused:false 
+        isBeingFocused:false,
+        tech: ["Unity", "Blender", "C#", "Python", "Tensorflow"],
     },
     {
         id:2,
@@ -41,7 +44,8 @@ const projects = [
         githubLink: "https://github.com/Winch3ster/Vendor-Application-Inventory-Platform",
         image: vendor,
         isVisible:true, 
-        isBeingFocused:false 
+        isBeingFocused:false,
+        tech: ["C#", ".NET CORE"]
     },
     {
         id:3,
@@ -53,7 +57,8 @@ const projects = [
         githubLink: "https://github.com/Winch3ster/Broker-Petrol",
         image: preInterview,
         isVisible:false, 
-        isBeingFocused:false 
+        isBeingFocused:false,
+        tech: ["Vaadin", "Java"]
     },
 
 
@@ -67,7 +72,8 @@ const projects = [
         githubLink: "https://github.com/Winch3ster/Broker-Petrol",
         image: gasStationSimulation,
         isVisible:false, 
-        isBeingFocused:false 
+        isBeingFocused:false,
+        tech: ["Window Forms", "C#"] 
     },
 
     {
@@ -80,7 +86,8 @@ const projects = [
         githubLink: "https://github.com/Winch3ster/Broker-Petrol",
         image: bitsey,
         isVisible:false, 
-        isBeingFocused:false 
+        isBeingFocused:false,
+        tech: ["Django", "Python", "Bootstrap", "Javascript"] 
     },
     {
         id:6,
@@ -92,8 +99,10 @@ const projects = [
         githubLink: "https://github.com/Winch3ster/Broker-Petrol",
         image: forza,
         isVisible:false, 
-        isBeingFocused:false 
+        isBeingFocused:false,
+        tech: ["Java Swing", "Java Networking"] 
     },
+    
 ]
 
 

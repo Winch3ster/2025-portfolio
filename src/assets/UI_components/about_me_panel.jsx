@@ -9,7 +9,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
         <div>
             <div class='absolute w-full h-full bg-black opacity-30 z-30'></div>
 
-            <div class={`absolute ${isMobile ? "right-8 top-8 about-me-panel-config-mobile text-sm" : "right-30 top-30 about-me-panel-config text-base" } rounded-2xl pt-5`}>
+            <div class={`absolute ${isMobile ? "right-8 top-8 about-me-panel-config-mobile sm:text-sm text-extra-small" : " xl:right-30 xl:top-30  lg:right-20 lg:top-20 right-10 top-10 about-me-panel-config xl:text-base text-xs" } rounded-2xl pt-5`}>
        
                 <div class='panel-close' onClick={closePanelCallbackFunction}>
                     <img class='h-4 w-4'  src={leftChevron} alt="" />

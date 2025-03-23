@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import textBundle from "../../msgbundle";
 import leftChevron from '../icons/left-chevron.png'
 import rightChevron from '../icons/right-chevron_black.png'
@@ -6,8 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import projectList from '../../projects'
 
 
-
-const isMobile = window.matchMedia("(any-pointer: coarse)").matches &&  window.innerHeight < 500;
+const screenTouchable = window.matchMedia("(any-pointer: coarse)").matches
+const isMobile = screenTouchable &&  window.innerHeight < 500;
 
 const NUMBER_OF_VISIBLE_PROJECT_PICTURE = 3
 
@@ -20,14 +20,14 @@ const ProjectPictureComponent = ({isFocused, imageUrl}) =>{
     )
 }
 
-const ProjectDetailSection = ({currentFocusedProject}) => {
+const ProjectDetailSection = ({currentFocusedProject,windowWithSmallHeight }) => {
 
   const isFypProject =  currentFocusedProject.isFYP;
   const [page, setPage] = useState(0);
 
   if(isFypProject && isMobile){
     return (
-      <div className="project-details-panel-mobile mt-2 pr-8">
+      <div className="project-details-panel-mobile mt-2 pr-8 not-mobile-fyp">
           <p class='text-black opacity-80 mb-1 font-semibold'>{currentFocusedProject.name}</p>
 
           {
@@ -62,8 +62,46 @@ const ProjectDetailSection = ({currentFocusedProject}) => {
       </div>
     );
   }else{
+    //if FYP but not on mobile
+    if(isFypProject){
+      return (
+        <div className={`project-details-panel-mobile mt-2 pr-8  ${screenTouchable ? "not-mobile-fyp" : "on-resizeble-pc-fyp"}`} style={{maxWidth: "100%"}}>
+            <p class='text-black opacity-80 mb-1 font-semibold'>{currentFocusedProject.name}</p>
+  
+            {
+              page == 0 ?
+               <p >{currentFocusedProject.description}</p>  
+              :
+                <div>
+                  <p >{currentFocusedProject.description2}</p>
+                  <div className='font-bold mt-2'>Tech & concept</div>
+                  <div className='grid grid-cols-3 grid-flow-row-dense'>
+                  
+                    {currentFocusedProject.tech.map((tech) => {
+                      return(<li>{tech}</li>)
+                    })} 
+                
+                  </div>
+                </div>
+                
+            }
+  
+          
+            <div className='flex justify-end font-bold'>
+              { page == 0 ?
+  
+                <div onClick={() => setPage(1)}>Next..</div> 
+                :
+                <div onClick={() => setPage(0)}>..Prev</div>
+              }
+           </div>
+  
+            
+        </div>
+      );
+    }
     return (
-      <div class={` mb-2 mt-2 ${isMobile ? "project-details-panel-mobile" : ""}`}>
+      <div class={` mb-2 mt-2 ${isMobile ? "project-details-panel-mobile text-extra-small" : windowWithSmallHeight ? "w-8/12" : ""}`}>
         {currentFocusedProject.companyAttached ?
           <div>
               <p class='text-black opacity-80 mb-1 font-semibold'>{currentFocusedProject.name}</p>
@@ -73,7 +111,7 @@ const ProjectDetailSection = ({currentFocusedProject}) => {
           :
           <p class='text-black opacity-80 mb-1 font-semibold'>{currentFocusedProject.name}</p>
         }
-        <p >{currentFocusedProject.description}</p>  
+        <p>{currentFocusedProject.description}</p>  
         <div className='font-bold mt-2'>Tech & concept</div>
         <div className='grid grid-cols-3 grid-flow-row-dense'>
          
@@ -93,17 +131,33 @@ const ProjectDetailSection = ({currentFocusedProject}) => {
 
 const MyProjectsPanel = ({closePanelCallbackFunction, isParentAnimationDone}) => {
 
-
       const [projectObjectList, setProjectObjectListState] = useState(projectList);
       const [currentFocusedProject, setCurrentFocusedProject] = useState(projectObjectList.find((c) => c.isBeingFocused));
+      const [windowWithSmallHeight, setWindowWithSmallHeight] = useState(false);
 
+      function checkWindowForSmallHeight(){
+        console.log("Checking window for small height")
+        if(window.innerHeight < 600){
+          setWindowWithSmallHeight(true);
+        }else{
+          setWindowWithSmallHeight(false);
+
+        }
+      }
       useEffect(() => {
+
+        if(!isMobile){
+          window.addEventListener("resize", checkWindowForSmallHeight); // Listen for screen size changes
+          checkWindowForSmallHeight();
+        }
+
         //Force reset state when unmounting component
         return () => {
           setProjectObjectListState([...projectList.map(project => ({ ...project }))]);
+          window.removeEventListener("resize", checkWindowForSmallHeight);
+
         };
       }, []);
-
 
       const nextSlide = () => {
         setProjectObjectListState((prev) => {
@@ -130,7 +184,7 @@ const MyProjectsPanel = ({closePanelCallbackFunction, isParentAnimationDone}) =>
     return(
         <div>
             <div class='z-20 absolute w-full h-full bg-black opacity-30'></div>
-            <div class={`absolute ${isMobile ? "right-8 top-8 about-me-panel-config-mobile text-sm" : " right-30 top-30 about-me-panel-config w-3/4 h-3/4 text-base"} rounded-2xl pt-5`}>   
+            <div class={`absolute ${(isMobile || windowWithSmallHeight) ? "right-8 top-8 my-project-panel-config-mobile text-sm text-extra-small" : "xl:right-30 xl:top-30  lg:right-20 lg:top-20 right-10 top-10 my-project-panel-config w-3/4 text-base" + (!windowWithSmallHeight && " remove-max-height")  } rounded-2xl pt-5`} style={(windowWithSmallHeight && !isMobile) ? {maxHeight:"70vh"} : {}}>   
               
             <div class='panel-close' onClick={closePanelCallbackFunction} >
               <img class='h-4 w-4'  src={leftChevron} alt="" />
@@ -140,13 +194,13 @@ const MyProjectsPanel = ({closePanelCallbackFunction, isParentAnimationDone}) =>
    
               
 
-            <div class="px-8 pt-2">
+            <div class={`px-8 pt-2`}>
                 <div class={`${isMobile ? "text-base" : "text-xl"} font-semibold`}>{textBundle["my.projects"]}</div>
 
-                {isMobile ?  
+                {isMobile || windowWithSmallHeight ?  
                 <div className="flex items-center" style={{height: "60vh", width: "100%"}}>
                   <div className='flex' style={{width: "95%", height:"100%"}}>
-                    <ProjectDetailSection currentFocusedProject={currentFocusedProject}></ProjectDetailSection>
+                    <ProjectDetailSection className={windowWithSmallHeight && "w-10"} currentFocusedProject={currentFocusedProject} windowWithSmallHeight={windowWithSmallHeight}></ProjectDetailSection>
 
                     <div className="w-10"></div>
 
@@ -181,7 +235,7 @@ const MyProjectsPanel = ({closePanelCallbackFunction, isParentAnimationDone}) =>
                         </AnimatePresence>)}
                       </div>
                     </div>
-
+                    <div className="w-2"></div>
                     <div className="w-7 h-16 rounded-2xl flex justify-center items-center cursor-pointer next-project-btn" onClick={nextSlide}>
                       <img src={rightChevron} alt="" />
                     </div>

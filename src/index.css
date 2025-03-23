@@ -478,23 +478,31 @@ body{
 }
 
 
-.about-me-panel-config{
-  width: 75%;
-  height: 70%;
+.about-me-panel-config, .my-project-panel-config{
   max-width: 53vw;
   max-height: 65vh;
   background-color: rgb(243, 242, 247);
   z-index: 30;
   position: absolute;
 }
+.my-project-panel-config{
+  padding-bottom: 10px;
+}
 
-.about-me-panel-config-mobile{
+.remove-max-height{
+  max-height: 100%;
+}
+.window-small-height-project-description{
+  max-width: 70%;
+}
+.about-me-panel-config-mobile, .my-project-panel-config-mobile{
   width: 85vw;
   height: 83vh;
   background-color: rgb(243, 242, 247);
   z-index: 30;
   position: absolute;
 }
+
 
 .project-details-panel-mobile{
   max-width: 62%;
@@ -669,20 +677,30 @@ body{
 
 
 
-@media (max-width: 1024px) {
-  .about-me-panel-config {
-    width: 75%;
-    height: 70%;
+
+
+@media (width <= 80rem ) {
+  .about-me-panel-config{
+    max-width: 95vw;
+    max-height: 95vh;    
+  }
+  .my-project-panel-config{
+    max-width: 95vw; 
+  }
+  
+
+}
+
+
+@media (max-width: 800px) {
+  .text-extra-small{
+    font-size: 12px;
   }
 }
 
 
 /* Apply styles for screens smaller than Tailwind's `md` (768px) */
 @media (max-width: 767px) {
-  .about-me-panel-config {
-    width: 90%;
-    height: 90%;
-  }
 
   .individual-icon{
     height: 22px;
@@ -698,5 +716,42 @@ body{
     height: 15px;
   }
 
+}
+
+
+@media (max-aspect-ratio: 3/2) { /* Equivalent to width/height <= 80/100 */
+  .about-me-panel-config {
+    max-width: 75vw;
+    max-height: 90vh;    
+  }
+  .my-project-panel-config,.my-project-panel-config-mobile {
+    max-height: 60vh;  
+    padding-bottom: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+
+  .near-square-screen-size-panel{
+    width:50%;
+    left: 8vw;
+    bottom: 2vh;
+  }
+  .my-project-panel-config{
+    max-width: 70vw;
+    max-height: 65vh;
+    right:15vw;
+    top:18vh;
+  }
+  .near-square-screen-size-config-sim-word-overlay{
+    left: 8vw;
+    top: 5vh;
+  }
+  .not-mobile-fyp{
+    max-width: 100%;
+  }
+  .on-resizeble-pc-fyp{
+    max-width: 65%;
+  }
 }
 

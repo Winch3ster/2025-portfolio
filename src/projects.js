@@ -73,7 +73,7 @@ const projects = [
         image: gasStationSimulation,
         isVisible:false, 
         isBeingFocused:false,
-        tech: ["Window Forms", "C#"] 
+        tech: [ "C#", "Window Forms"] 
     },
 
     {
@@ -113,7 +113,7 @@ const projects = [
         image: drawingApplication,
         isVisible:false, 
         isBeingFocused:false,
-        tech: ["Window Forms", "C#"] 
+        tech: [ "C#", "Window Forms"] 
     },
     
 ]

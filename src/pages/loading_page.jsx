@@ -2,27 +2,40 @@
 import { lazy, use, useContext, useEffect, useState } from "react";
 import textBundle from "../msgbundle";
 
-import {appContext, MINIMUM_SCREEN_WIDTH} from '../context';
+import {appContext, MINIMUM_SCREEN_WIDTH, MINIMUM_MEDIUM_SCREEN_ASPECT_RATIO} from '../context';
 import PleaseRotateDevicePanel from "../assets/UI_components/please_rotate_device";
 import TutorialPopup from "../assets/UI_components/tutorial";
 
+const isTouchDevice = window.matchMedia("(any-pointer: coarse)").matches;
+const isMobile = isTouchDevice && window.innerHeight < MINIMUM_SCREEN_WIDTH;
 
 const LoadingPage = ({pageName}) => {
     
     const [matchLayoutCriteria, setmatchLayoutCriteria] = useState(true); 
 
     const checkForMatchingCriteria = () => {
-        const isTouchDevice = window.matchMedia("(any-pointer: coarse)").matches;
-        const isPortrait = window.innerHeight > window.innerWidth;
+      
+        console.log("Window resizing");
+        console.log("window height: " + window.innerHeight)
+        const innerHeight = window.innerHeight;
+        const innerWidth = window.innerWidth
+        const isPortrait = innerHeight > innerWidth;
+
     
-        if (isTouchDevice && isPortrait && window.innerWidth < MINIMUM_SCREEN_WIDTH) {
+        if (isTouchDevice && isPortrait && innerWidth < MINIMUM_SCREEN_WIDTH) {
             setmatchLayoutCriteria(false);
     
         } else if (isTouchDevice && !isPortrait) {
             setmatchLayoutCriteria(true);
         
         } else {
-            setmatchLayoutCriteria(true); //For computers, set to true
+
+            if((innerWidth / innerHeight) < MINIMUM_MEDIUM_SCREEN_ASPECT_RATIO || innerHeight < 480){
+                setmatchLayoutCriteria(false);
+            }else{
+                setmatchLayoutCriteria(true); //For computers, set to true
+            } 
+            
         }
     };
 
@@ -93,9 +106,17 @@ const LoadingPage = ({pageName}) => {
         }
                   
         </>
-    ) : (
+    ) : isMobile ? (
+
+        
         <PleaseRotateDevicePanel></PleaseRotateDevicePanel>
-    );
+    ): 
+    (<div className="w-full h-screen standard-dark-gray flex items-center justify-center text-white px-40">
+        <div className='text-center'> 
+            Please maximize your window or increase its aspect ratio for a better experience. 
+        </div>
+    </div>)
+    ;
 };
 
 export default LoadingPage; 

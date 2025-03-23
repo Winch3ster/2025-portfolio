@@ -20,6 +20,7 @@ const newPosition = new Vector3();
 const lookAtPosition = new Vector3();
 const isMobile = window.matchMedia("(any-pointer: coarse)").matches &&  window.innerHeight < 500;
 
+
 function Rig({currentActivatedPanel}) {
   const { camera } = useThree()
   const [mouse, setMouse] = useState({ x: 0, y: 0 });

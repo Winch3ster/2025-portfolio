@@ -13,7 +13,7 @@ const projects = [
         companyAttached : true,
         companyName: "iFAST Global Hub",
         name:"FSMOne Mobile App Singapore Region",
-        description: "Assisted in the feature development and maintenance of FSMOne mobile app particularly in the Singapore region. FSMOne is an investment platform to empower investors in Singapore, Hong Kong and Malaysia to invest in simple and transparent investment products such as stocks, ETFs, funds, bonds and foreign exchange.  ",
+        description: "Assisted in the feature development and maintenance of FSMOne mobile app in Singapore region. FSMOne is an investment platform to empower investors in Singapore, Hong Kong and Malaysia to invest in transparent investment products such as stocks, ETFs, funds, bonds and foreign exchange.",
         githubLink: "",
         image: fsm,
         isVisible:true, 

@@ -71,7 +71,6 @@ const LoadingPage = ({pageName}) => {
                 setPageComponent(() => LazyLandingPage);
               
             }else{
-                console.log("Fetching simulation page page")
                 const LazyLandingPage =  lazy(() =>  import("./simulation_page"));
                 setPageComponent(() => LazyLandingPage);
                 setShowTutorial(false)

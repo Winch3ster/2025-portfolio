@@ -77,11 +77,7 @@ function Rig({currentActivatedPanel}) {
 
 function SimulationPage({loadingCallback, Home_scene_param}) {
 
-  
-  console.log("Home_scene_param content");
-  console.log(Home_scene_param)
-
-    const [enableSpecialEffect, setEnableSpecialEffect ] = useState(false);
+    const [enableSpecialEffect, setEnableSpecialEffect ] = useState(true);
 
     const [currentActivatedPanel, setCurrentActivatedPanel] = useState("none");
 

@@ -30,7 +30,6 @@ const SimulationPageOverlay = ({currentActivatedPanel}) => {
     };
 
     useEffect(() => {
-        console.log("mounting SimulationPageOverlay");
         setTimeout(() => {
             setShowNotification(true);
         }, 1000);

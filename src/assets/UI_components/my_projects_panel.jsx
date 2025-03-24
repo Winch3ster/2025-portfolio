@@ -136,7 +136,6 @@ const MyProjectsPanel = ({closePanelCallbackFunction, isParentAnimationDone}) =>
       const [windowWithSmallHeight, setWindowWithSmallHeight] = useState(false);
 
       function checkWindowForSmallHeight(){
-        console.log("Checking window for small height")
         if(window.innerHeight < 600){
           setWindowWithSmallHeight(true);
         }else{
@@ -176,7 +175,6 @@ const MyProjectsPanel = ({closePanelCallbackFunction, isParentAnimationDone}) =>
        
           return temp;
         })
-        console.log("next is clicked")
         setCurrentFocusedProject(projectObjectList.find((c) => c.isBeingFocused) );
 
         

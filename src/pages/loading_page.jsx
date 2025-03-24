@@ -14,9 +14,7 @@ const LoadingPage = ({pageName}) => {
     const [matchLayoutCriteria, setmatchLayoutCriteria] = useState(true); 
 
     const checkForMatchingCriteria = () => {
-      
-        console.log("Window resizing");
-        console.log("window height: " + window.innerHeight)
+    
         const innerHeight = window.innerHeight;
         const innerWidth = window.innerWidth
         const isPortrait = innerHeight > innerWidth;
@@ -51,7 +49,6 @@ const LoadingPage = ({pageName}) => {
     useEffect(() => {
         if(localStorage.getItem("firstTimeLanding") == null){
             localStorage.setItem("firstTimeLanding", true)
-            console.log("localStorage is null: " + localStorage.getItem("firstTimeLanding"));
           }
           
         if(pageName === "landing"){

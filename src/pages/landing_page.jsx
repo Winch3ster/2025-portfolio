@@ -19,7 +19,6 @@ function Rig() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
   const handleTouchMovement = (event) => {
-    console.log("touchmovement in landing running")
     const touches = event.touches[0];
     const x = (touches.clientX / window.innerWidth) * 2 - 1;
     const y = -(touches.clientY / window.innerHeight) * 2 + 1;

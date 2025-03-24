@@ -18,8 +18,8 @@ const LOOK_AT_COORDINATE = [1.3, 0.6, -3.8];
 
 const newPosition = new Vector3();
 const lookAtPosition = new Vector3();
-const isMobile = window.matchMedia("(any-pointer: coarse)").matches &&  window.innerHeight < 500;
 
+const isTouchDevice =window.matchMedia("(any-pointer: coarse)").matches;
 
 function Rig({currentActivatedPanel}) {
   const { camera } = useThree()
@@ -40,7 +40,7 @@ function Rig({currentActivatedPanel}) {
 
 
   useEffect(() => {
-    if(isMobile){
+    if(isTouchDevice){
       window.addEventListener("touchmove", handleTouchMovement);
       return () => window.removeEventListener("touchmove", handleTouchMovement);
     }else{

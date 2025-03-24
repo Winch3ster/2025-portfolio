@@ -9,7 +9,7 @@ import LandingPageNavigationBar from "../assets/UI_components/landing_page_nav_b
 import LandingPageOverlay from "../assets/UI_components/landing_page_overlay";
 import { LandingPageScene } from "../assets/model_components/landing_page_scene";
 
-const isMobile = window.matchMedia("(any-pointer: coarse)").matches &&  window.innerHeight < 500;
+const isTouchDevice = window.matchMedia("(any-pointer: coarse)").matches
 const lookAtTarget = new Vector3(-5, 3, -37);
 const targetPosition = new Vector3();
 
@@ -19,6 +19,7 @@ function Rig() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
   const handleTouchMovement = (event) => {
+    console.log("touchmovement in landing running")
     const touches = event.touches[0];
     const x = (touches.clientX / window.innerWidth) * 2 - 1;
     const y = -(touches.clientY / window.innerHeight) * 2 + 1;
@@ -31,7 +32,7 @@ function Rig() {
   };
 
   useEffect(() => {
-    if(isMobile){
+    if(isTouchDevice){
       window.addEventListener("touchmove", handleTouchMovement);
       return () => window.removeEventListener("touchmove", handleTouchMovement);
     }else{

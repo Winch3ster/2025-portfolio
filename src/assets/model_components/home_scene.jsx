@@ -2,13 +2,14 @@ import React, { useEffect, useRef } from 'react'
 import { useAnimations, useGLTF } from '@react-three/drei'
 
 //position={[1,-5.5,-93]
-export const Home_scene = ({finishedLoadingCallback,...props}) => {
+export const Home_scene = ({finishedLoadingCallback, preFetchedModel, ...props}) => {
     const group = useRef()
     
-    const { nodes, materials,animations } = useGLTF(
-      "./src/assets/models/17_march_OO_raiser_portfolio_final_version_compression_blue_color_fixed.glb"
+    
 
-    );
+    const { nodes, materials,animations } = useGLTF(preFetchedModel || "../models/17_march_OO_raiser_portfolio_final_version_compression_blue_color_fixed.glb");
+
+
     const { actions } = useAnimations(animations, group);
 
     

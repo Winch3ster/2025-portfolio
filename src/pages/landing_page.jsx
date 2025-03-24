@@ -53,7 +53,7 @@ function Rig() {
 
 }
 
-const LandingPage = ({loadingCallback}) => {
+const LandingPage = ({loadingCallback, Home_scene_param}) => {
 
   const [loadingScene, setLoadingScene] = useState(true);
   useEffect(() => {
@@ -94,19 +94,12 @@ const LandingPage = ({loadingCallback}) => {
             <pointLight position={[17.5,12.3,-43.5]}  intensity={50} decay={3} color={"#0b9485"} ></pointLight>
 
 
-
             <Sparkles  position={[0,-5,-38]} count={200} scale={20 * 2} size={15} speed={3} color={"#0b9485"} />
 
             <Sparkles  position={[4,-5,-40]} count={100} scale={20 * 2} size={20} speed={2}  color={"#0b9485"} />
 
-
-            
-
               <EffectComposer>
                       
-            
-            
-
                 <Vignette eskil={false} offset={0.1} darkness={1} />
             </EffectComposer>
             

@@ -8,8 +8,11 @@ import TutorialPopup from "../assets/UI_components/tutorial";
 
 const isTouchDevice = window.matchMedia("(any-pointer: coarse)").matches;
 
+var fetchedModel = false;
 const LoadingPage = ({pageName}) => {
-    
+
+
+
     const [matchLayoutCriteria, setmatchLayoutCriteria] = useState(true); 
 
     const checkForMatchingCriteria = () => {
@@ -43,44 +46,69 @@ const LoadingPage = ({pageName}) => {
     }
     const [PageComponent, setPageComponent] = useState(null);
 
-    const [firstTimeLanding, setFirstTimeLanding] = useState(localStorage.getItem("firstTimeLanding"));
-      
-    useEffect(() => {
-        if(localStorage.getItem("firstTimeLanding") == null){
-            localStorage.setItem("firstTimeLanding", true)
-          }
-          
-        if(pageName === "landing"){
-            const LazyLandingPage = lazy(() => import("./landing_page"));
-            setPageComponent(() => LazyLandingPage);
+    function getLocalStorgaeShowTurorial(){
+        const storageItem = localStorage.getItem("firstTimeLanding")
+        if(storageItem == "true"){
+            return true;
+        }else if(storageItem == null){
+            return true;
         }else{
-            const LazyLandingPage = lazy(() => import("./simulation_page"));
-            setPageComponent(() => LazyLandingPage);
+            return false;
+        }
+    }
+    const [showTutorial, setShowTutorial] = useState(getLocalStorgaeShowTurorial());
+    const [model, setModel] = useState();
+    useEffect(() => {
+      
+        if(!showTutorial){
+            
+            if(pageName === "landing"){
+                const LazyLandingPage = lazy(() => import("./landing_page").then((originalModule) => {
+                    setShowTutorial(false);
+                    return originalModule;
+                }
+                ));
+                setPageComponent(() => LazyLandingPage);
+              
+            }else{
+                console.log("Fetching simulation page page")
+                const LazyLandingPage =  lazy(() =>  import("./simulation_page"));
+                setPageComponent(() => LazyLandingPage);
+                setShowTutorial(false)
+            }
         }
 
         window.addEventListener("resize", checkForMatchingCriteria); // Listen for screen size changes
         checkForMatchingCriteria();
         return () => window.removeEventListener("resize", checkForMatchingCriteria); // Cleanup
-       
-    }, [matchLayoutCriteria]);
 
-    function closeTutorial(){
-        setFirstTimeLanding(false);
-        localStorage.setItem("firstTimeLanding", false)
+    }, [showTutorial]);
+
+    if(!fetchedModel){
+        fetchedModel = true;
+        fetch("/models/17_march_OO_raiser_portfolio_final_version_compression_blue_color_fixed.glb")
+            .then(response => response.blob()) // Convert to Blob
+            .then(blob => {
+                const url = URL.createObjectURL(blob); // Create Object URL
+                setModel(url);
+            })
+            .catch(error => console.error("Error preloading model:", error));
     }
 
-    function allCriteriaToShowTutorial(){
-        const isTouchDevice = window.matchMedia("(any-pointer: coarse)").matches;
+    function closeTutorial(){
+        
+        setShowTutorial((prev) => {
+            return false;
+        });
 
-        //user must be first time entering the site AND is a mobile/ touch screen user
-        return (localStorage.getItem("firstTimeLanding") == null || localStorage.getItem("firstTimeLanding") == "true") && isTouchDevice;
+        localStorage.setItem("firstTimeLanding", "false"); // Ensure string type
     }
     
     return matchLayoutCriteria ? (
-
+    
         <>
         {
-            allCriteriaToShowTutorial()
+            showTutorial
                 ? 
                 <TutorialPopup closeTutorialCallback={closeTutorial}></TutorialPopup>
                 :
@@ -96,7 +124,7 @@ const LoadingPage = ({pageName}) => {
                     )}
 
                     {PageComponent && (
-                        <PageComponent loadingCallback={setIsLoadingHelper} />
+                        <PageComponent loadingCallback={setIsLoadingHelper} Home_scene_param={model} />
                     )}
                 </div>
         }

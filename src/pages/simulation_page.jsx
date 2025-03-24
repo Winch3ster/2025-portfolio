@@ -75,10 +75,11 @@ function Rig({currentActivatedPanel}) {
 
 
 
-function SimulationPage({loadingCallback}) {
+function SimulationPage({loadingCallback, Home_scene_param}) {
 
   
-
+  console.log("Home_scene_param content");
+  console.log(Home_scene_param)
 
     const [enableSpecialEffect, setEnableSpecialEffect ] = useState(false);
 
@@ -90,9 +91,7 @@ function SimulationPage({loadingCallback}) {
     const [loadingScene, setLoadingScene] = useState(true);
 
     useEffect(() => {
-      if(loadingScene == false){
-        loadingCallback()
-    }
+    loadingCallback()
       
     }, [loadingScene]);
     
@@ -176,7 +175,7 @@ function SimulationPage({loadingCallback}) {
                 <pointLight  position={[2, 1, 1]} intensity={9} decay={0.2} color={"#89a2b3"} ></pointLight>
                 <pointLight  position={[-2, 0.2, -1]} intensity={2} decay={0.5}  color={"#fff1e6"} ></pointLight>
 
-                <Home_scene finishedLoadingCallback={setIsLoadingHelperScene}></Home_scene>
+                <Home_scene finishedLoadingCallback={setIsLoadingHelperScene} preFetchedModel={Home_scene_param}></Home_scene>
 
                 <PerspectiveCamera  makeDefault position={CAMERA_POSITION} fov={32} onUpdate={(self) => self.lookAt(...LOOK_AT_COORDINATE)}> </PerspectiveCamera>
 

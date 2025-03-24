@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 export const LandingPageScene = ({finishedLoadingCallback,...props}) => {
 
 
-    const { nodes, materials } = useGLTF('./src/assets/models/00Raiser_18_march_landing_page_v2.glb')
+    const { nodes, materials } = useGLTF('/models/00Raiser_18_march_landing_page_v2.glb')
 
     useEffect(() => {
       finishedLoadingCallback();

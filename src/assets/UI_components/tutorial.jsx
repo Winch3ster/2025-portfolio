@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import textBundle from '../../msgbundle';
 import monitor from '../icons/monitor.png'
 

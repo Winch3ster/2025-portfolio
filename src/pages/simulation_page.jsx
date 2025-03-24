@@ -9,7 +9,7 @@ import {GlitchMode } from 'postprocessing'
 import SimulationPageOverlay from "../assets/UI_components/simulation_page_overlay";
 import AboutMePanel from "../assets/UI_components/about_me_panel";
 import MyProjectsPanel from "../assets/UI_components/my_projects_panel";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion } from "framer-motion";
 import { simulationContext } from "../context";
 
 

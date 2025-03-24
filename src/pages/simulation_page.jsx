@@ -1,7 +1,7 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import {  OrbitControls, PerspectiveCamera, } from "@react-three/drei"
+import { PerspectiveCamera, } from "@react-three/drei"
 import { Home_scene } from "../assets/model_components/home_scene";
-import { createContext, Suspense, useEffect, useRef, useState } from "react";
+import { useEffect,  useState } from "react";
 import {  Vector3 } from "three";
 import InteractableIndicator from "../assets/UI_components/interactable_indicator";
 import { EffectComposer,  Bloom, Vignette, Glitch } from '@react-three/postprocessing'

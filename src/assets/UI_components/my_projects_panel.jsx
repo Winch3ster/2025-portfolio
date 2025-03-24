@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import textBundle from "../../msgbundle";
 import leftChevron from '../icons/left-chevron.png'
 import rightChevron from '../icons/right-chevron_black.png'

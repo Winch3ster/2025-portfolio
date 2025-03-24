@@ -1,8 +1,8 @@
 
-import { lazy, use, useContext, useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import textBundle from "../msgbundle";
 
-import {appContext, MINIMUM_SCREEN_WIDTH, MINIMUM_MEDIUM_SCREEN_ASPECT_RATIO} from '../context';
+import { MINIMUM_SCREEN_WIDTH, MINIMUM_MEDIUM_SCREEN_ASPECT_RATIO} from '../context';
 import PleaseRotateDevicePanel from "../assets/UI_components/please_rotate_device";
 import TutorialPopup from "../assets/UI_components/tutorial";
 

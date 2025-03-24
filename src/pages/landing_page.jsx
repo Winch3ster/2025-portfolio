@@ -1,6 +1,5 @@
-import LoadingPage from "./loading_page";
-import { Suspense, useEffect, useState, } from "react";
-import { OrbitControls, PerspectiveCamera, Sparkles,  } from "@react-three/drei";
+import { useEffect, useState, } from "react";
+import { PerspectiveCamera, Sparkles,  } from "@react-three/drei";
 import { Canvas, useFrame, useThree} from "@react-three/fiber";
 import { EffectComposer, Vignette } from "@react-three/postprocessing";
 import { Vector3 } from "three";

@@ -46,8 +46,6 @@ const QuickNavComponent = ({marginX, marginY, content, link, specialEffectCallba
        
     )
 }
-// ${specialEffectCallback.enableSpecialEffect && " enable-special-effect-off"}   onClick={() => specialEffectCallback.toggleSpecialEffectHelper()}
-
 
 const QuickNavigation = ({navIsOpen}) => {
     const contextValues = useContext(simulationContext);
@@ -72,12 +70,7 @@ const QuickNavigation = ({navIsOpen}) => {
 const SimulationNav = () => {
     
     //This is for the navigation
-
-    //Name, status --> looking for job, employed, unavailable, social media links 
-
-    //Green --> looking for job
-    //Gray --> unavailable
-
+    
     const [quickNavIsOpen, setQuickNavIsOpenState] = useState(false);
 
     function openQuickNav(){

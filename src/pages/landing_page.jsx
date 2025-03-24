@@ -51,9 +51,7 @@ function Rig() {
     camera.lookAt(lookAtTarget);
   })  
 
-//...[-5,3 ,-37]
 
-  //return <CameraShake maxYaw={0.01} maxPitch={0.01} maxRoll={0.01} yawFrequency={0.5} pitchFrequency={0.5} rollFrequency={0.4} />
 }
 
 const LandingPage = ({loadingCallback}) => {
@@ -121,27 +119,4 @@ const LandingPage = ({loadingCallback}) => {
     </>
   );
 };
-
-                //{sourceRef ? <TrailEffect meshRef={sourceRef}></TrailEffect> : console.log("No source does not exist")}
-//            <PerspectiveCamera  makeDefault position={[-1.7, -0.6, 30]} fov={40} > </PerspectiveCamera>
-
 export default LandingPage;
-
-
-
-/*
-
-                <Sparkles count={50} scale={4 * 2} size={100} speed={10} color={"#0b9485"} noise={0.5} />
-
-
-
-
-  <mesh position={[-18,10,-45]}>
-            <boxGeometry
-              args={[5,5,5]}
-            />
-            <meshNormalMaterial/>
-          </mesh>
-
-
-*/

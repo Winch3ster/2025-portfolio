@@ -11,15 +11,6 @@ const isMobile = screenTouchable &&  window.innerHeight < 500;
 
 const NUMBER_OF_VISIBLE_PROJECT_PICTURE = 3
 
-const ProjectPictureComponent = ({isFocused, imageUrl}) =>{
-
-    return (
-        <div class={` bg-gray-600 rounded-2xl ${isFocused ? "h-36 w-56" : "h-28 w-44"} mr-10`}
-        style={{ backgroundImage: `url("../projects/fsmone.jpg")`, backgroundSize: "contain", backgroundPosition: "center" }}
-        ></div>
-    )
-}
-
 const ProjectDetailSection = ({currentFocusedProject,windowWithSmallHeight, isSmallScreenView }) => {
 
   const isFypProject =  currentFocusedProject.isFYP;

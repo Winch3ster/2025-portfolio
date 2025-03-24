@@ -5,7 +5,6 @@ const SMALL_HEIGHT_ASPECT_RATIO = 2; //width/height
 
 
 const NotificationPanel = ({ closeNotificationCallback, content, icon }) => {
-    const screenWithSmallHeight = window.innerWidth/ window.innerHeight > SMALL_HEIGHT_ASPECT_RATIO;
     const isMobile = window.matchMedia("(any-pointer: coarse)").matches &&  window.innerHeight < 500;
 
 

@@ -7,7 +7,6 @@ import PleaseRotateDevicePanel from "../assets/UI_components/please_rotate_devic
 import TutorialPopup from "../assets/UI_components/tutorial";
 
 const isTouchDevice = window.matchMedia("(any-pointer: coarse)").matches;
-const isMobile = isTouchDevice && window.innerHeight < MINIMUM_SCREEN_WIDTH;
 
 const LoadingPage = ({pageName}) => {
     

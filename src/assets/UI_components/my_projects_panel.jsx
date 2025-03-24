@@ -20,7 +20,7 @@ const ProjectPictureComponent = ({isFocused, imageUrl}) =>{
     )
 }
 
-const ProjectDetailSection = ({currentFocusedProject,windowWithSmallHeight }) => {
+const ProjectDetailSection = ({currentFocusedProject,windowWithSmallHeight, isSmallScreenView }) => {
 
   const isFypProject =  currentFocusedProject.isFYP;
   const [page, setPage] = useState(0);
@@ -65,7 +65,7 @@ const ProjectDetailSection = ({currentFocusedProject,windowWithSmallHeight }) =>
     //if FYP but not on mobile
     if(isFypProject){
       return (
-        <div className={`project-details-panel-mobile mt-2 pr-8  ${screenTouchable ? "not-mobile-fyp" : "on-resizeble-pc-fyp"}`} style={{maxWidth: "100%"}}>
+        <div className={`project-details-panel-mobile mt-2 pr-8`} style={isSmallScreenView ? {maxWidth: "65%"} : {maxWidth:"100%"}} >
             <p class='text-black opacity-80 mb-1 font-semibold'>{currentFocusedProject.name}</p>
   
             {
@@ -200,7 +200,7 @@ const MyProjectsPanel = ({closePanelCallbackFunction, isParentAnimationDone}) =>
                 {isMobile || windowWithSmallHeight ?  
                 <div className="flex items-center" style={{height: "60vh", width: "100%"}}>
                   <div className='flex' style={{width: "95%", height:"100%"}}>
-                    <ProjectDetailSection className={windowWithSmallHeight && "w-10"} currentFocusedProject={currentFocusedProject} windowWithSmallHeight={windowWithSmallHeight}></ProjectDetailSection>
+                    <ProjectDetailSection className={windowWithSmallHeight && "w-10"} currentFocusedProject={currentFocusedProject} windowWithSmallHeight={windowWithSmallHeight} isSmallScreenView={true}></ProjectDetailSection>
 
                     <div className="w-10"></div>
 
@@ -277,7 +277,7 @@ const MyProjectsPanel = ({closePanelCallbackFunction, isParentAnimationDone}) =>
                   </div>
 
                   <>
-                    <ProjectDetailSection currentFocusedProject={currentFocusedProject}></ProjectDetailSection>
+                    <ProjectDetailSection currentFocusedProject={currentFocusedProject} isSmallScreenView={false}></ProjectDetailSection>
                   </>
                 </>
                 }

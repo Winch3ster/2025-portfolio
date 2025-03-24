@@ -106,7 +106,7 @@ const LoadingPage = ({pageName}) => {
         }
                   
         </>
-    ) : isMobile ? (
+    ) : isTouchDevice ? (
 
         
         <PleaseRotateDevicePanel></PleaseRotateDevicePanel>

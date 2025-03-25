@@ -41,9 +41,9 @@ function Rig() {
 
   useFrame(() => {
     targetPosition.set(
-      -40 + mouse.x * (isTouchDevice ? 13: 8),
-      7 + mouse.y * (isTouchDevice ? 13: 8),
-      10.26 + mouse.x * (isTouchDevice ? 15: 10)
+      -40 + mouse.x * (isTouchDevice ? 20: 8),
+      7 + mouse.y * (isTouchDevice ? 20: 8),
+      10.26 + mouse.x * (isTouchDevice ? 25: 10)
     );
 
     camera.position.lerp(targetPosition, 0.05);

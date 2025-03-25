@@ -3,7 +3,7 @@ const textBundle = {
     "home.unavailable.for.work": "Unavailable",
     "landing.page.welcome": "Welcome",
     "landing.page.welcome.message": "Hey there! I'm Kingston, a computer science graduate from Anglia Ruskin University, passionate about software development, CG modeling, and the arts. Enter the simulation to explore my projects, and feel free to reach out!",
-    "landing.page.enter.simulation": "Enter Simulation",
+    "landing.page.enter.simulation": "Explore",
     "common.resume" : "Résumé",
     "common.kingston" : "Kingston",
     "simulation.page.featuring": "MOBILE SUIT GUNDAM 00 RAISER",

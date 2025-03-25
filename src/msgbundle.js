@@ -16,7 +16,7 @@ const textBundle = {
     "about.me.panel.based": "Malaysia",
     "about.me.panel.description": "Hi! Thanks for visiting my portfolio.I am Kingston - I have experience in web, game, WinForms and mobile app development, as well as AI training.", 
     "about.me.panel.description.2": "Beyond coding, I love exploring physics, evolutionary biology, and conflict history. Outside of academics, you'll find me creating 3D models, crafting miniature art, playing guitar, or swimming.",
-    "about.me.panel.description.3" : "I believe in using technology to create a better world. That’s why I share my projects on GitHub and models as part of Pack 3D Models (p3dm) community - so anyone can learn, innovate, and build something meaningful together.",
+    "about.me.panel.description.3" : "I believe in using technology to create a better world. That’s why I share my projects on GitHub and models as part of Pack 3D Models (p3dm) community for free! - so anyone can learn, innovate, and build something meaningful together.",
     "about.me.panel.ps": "PS: That profile is AI generated, but I'm real!",
     "common.github.button.text": "</Github>",
     "common.instagram": "Instagram",

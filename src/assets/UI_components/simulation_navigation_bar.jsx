@@ -53,8 +53,8 @@ const QuickNavigation = ({navIsOpen}) => {
    
 
     return(
-        <div class={` absolute top-0 ${isMobile ? "w-40": "w-52"} right-0 h-full flex items-center justify-start overflow-hidden  opacity-70 quick-navigation-open-animation ${navIsOpen ? "open" : ""} `}>
-            <div class={`absolute  ${isMobile ? "h-40 w-40 ml-5":" h-60 w-60 ml-5"}   radar-quick-menu `}>
+        <div class={` absolute top-0 ${isMobile ? "w-40": "w-60"} right-0 h-full flex items-center justify-start overflow-hidden  opacity-70 quick-navigation-open-animation ${navIsOpen ? "open" : ""} `}>
+            <div class={`absolute  ${isMobile ? "h-40 w-40 ml-5":" h-60 w-60 ml-10"}   radar-quick-menu `}>
                 <QuickNavComponent marginX={ "ml-[25px]"} marginY={isMobile ? "-mt-[8px]": "-mt-[10px]"} content={homeIcon} isHomeButton={true}></QuickNavComponent>
                 <QuickNavComponent marginX={isMobile ? "-ml-[15px]" :"-ml-[25px]"} marginY={isMobile ? "mt-[2px]": "-mt-[5px]"} content={githubLogo} link={"https://github.com/Winch3ster"}></QuickNavComponent>
                 <QuickNavComponent marginX={isMobile ? "-ml-[14px]": "-ml-[25px]"} marginY={"mt-[15px]"} content={instagramLogo} link={"https://www.instagram.com/king_st0ne/"} ></QuickNavComponent>

@@ -50,7 +50,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                                 <br></br>
                                 <p>{textBundle["about.me.panel.description.2"]}</p>
                                 <br></br>
-                                <div className="flex justify-end font-bold" onClick={() => setPageNumber(1)}>Next...</div>
+                                <div className="flex justify-end font-bold cursor-pointer" onClick={() => setPageNumber(1)}>Next...</div>
                             </div>
                             
                             : 
@@ -58,7 +58,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                                 <p>{textBundle["about.me.panel.description.3"]}</p>
                                 <br></br>
                                 <p class='font-bold'>{textBundle["about.me.panel.ps"]}</p>
-                                <div className="flex justify-end font-bold" onClick={() => setPageNumber(0)}>Prev...</div>
+                                <div className="flex justify-end font-bold cursor-pointer" onClick={() => setPageNumber(0)}>Prev...</div>
                             </div>
 
 
@@ -70,8 +70,8 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                             {isMobile ? <div class="h-1"></div>: <div class="h-5"></div>}
 
                             <div class="flex">
-                                <a href="https://www.instagram.com/king_st0ne/" target="_blank">
-                                    <div class="mr-10 instagram-styled-btn">{textBundle["common.instagram"]}</div>
+                                <a href="https://p3dm.ru/" target="_blank">
+                                    <div class="mr-10 instagram-styled-btn">{textBundle["common.p3dm"]}</div>
                                 </a>
 
                                 <a href="https://github.com/Winch3ster" target="_blank">

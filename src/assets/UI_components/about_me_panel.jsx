@@ -2,16 +2,27 @@ import { useState } from "react";
 import textBundle from "../../msgbundle";
 import leftChevron from '../icons/left-chevron.png'
 import profile from '../profile.png'
+import { AnimatePresence, motion } from "framer-motion";
+import { sliderVariants, sliderTransition } from "../../context";
+
+  
 
 const AboutMePanel = ({closePanelCallbackFunction}) => {
     const isMobile = window.matchMedia("(any-pointer: coarse)").matches &&  window.innerHeight < 500;
-    const [pageNumber, setPageNumber] = useState(0);
+    const [[pageNumber, direction], setPageNumber] = useState([0,0]);
+
+    
+    
+    const swipeToPage = swipeDirection => {
+        setPageNumber([pageNumber + swipeDirection, swipeDirection])
+      }
+    
 
     return(
         <div>
             <div class='absolute w-full h-full bg-black opacity-30 z-30'></div>
 
-            <div class={`absolute ${isMobile ? "right-8 top-8 about-me-panel-config-mobile sm:text-sm text-extra-small" : " xl:right-30 xl:top-30  lg:right-20 lg:top-20 right-10 top-10 about-me-panel-config xl:text-base text-xs" } rounded-2xl pt-5`}>
+            <div class={`absolute ${isMobile ? "right-8 top-10 about-me-panel-config-mobile sm:text-sm text-extra-small" : " xl:right-30 xl:top-30  lg:right-20 lg:top-20 right-10 top-10 about-me-panel-config xl:text-base text-xs" } rounded-2xl pt-5`}>
        
                 <div class='panel-close' onClick={closePanelCallbackFunction}>
                     <img class='h-4 w-4'  src={leftChevron} alt="" />
@@ -41,33 +52,51 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                         <div class="-mt-10">
                             <div class="standard-dark-gray w-16 h-2 opacity-60 about-me-decor"></div>
                             <div class="h-4"></div>
-                            
-                            {pageNumber == 0 ? 
-                           
-                            <div>
 
-                                <p>{textBundle["about.me.panel.description"]}</p>
-                                <br></br>
-                                <p>{textBundle["about.me.panel.description.2"]}</p>
-                                <br></br>
-                                <div className="flex justify-end font-bold cursor-pointer" onClick={() => setPageNumber(1)}>Next...</div>
+                            <div className="flex flex-col items-center ">
+                            <div className="relative overflow-hidden">
+                                
+                               <AnimatePresence mode="popLayout" initial={false} custom={direction}>
+                                    <motion.div
+                                        key={pageNumber}
+                                        custom={direction}
+                                        variants={sliderVariants}
+                                        initial="incoming"
+                                        animate="active"
+                                        exit="exit"
+                                        transition={sliderTransition}
+                                    >
+                                    {pageNumber == 0 ? 
+                                
+                                    <div className={` ${isMobile ? "h-44" : "h-60"}  relative p-4`}>
+                                        <p>{textBundle["about.me.panel.description"]}</p>
+                                        <br />
+                                        <p>{textBundle["about.me.panel.description.2"]}</p>
+                                        
+                                        <div 
+                                            className="absolute bottom-0 right-4 cursor-pointer simple-button"
+                                            onClick={() => swipeToPage(1)}
+                                        >
+                                            Next...
+                                        </div>
+                                    </div>
+                                
+                                    : 
+                                    <div className={` ${isMobile ? "h-44" : "h-60"}  relative p-4`}>
+
+                                        <p>{textBundle["about.me.panel.description.3"]}</p>
+                                        <br></br>
+                                        <p class='font-bold'>{textBundle["about.me.panel.ps"]}</p>
+                                        <div className="absolute bottom-0 right-4 cursor-pointer simple-button" onClick={() => swipeToPage(-1)}>Prev...</div>
+                                    </div>
+                                    }
+
+                                    </motion.div>
+                                </AnimatePresence>
                             </div>
+                        </div>
                             
-                            : 
-                            <div>
-                                <p>{textBundle["about.me.panel.description.3"]}</p>
-                                <br></br>
-                                <p class='font-bold'>{textBundle["about.me.panel.ps"]}</p>
-                                <div className="flex justify-end font-bold cursor-pointer" onClick={() => setPageNumber(0)}>Prev...</div>
-                            </div>
-
-
-
-                             }
-
-
-
-                            {isMobile ? <div class="h-1"></div>: <div class="h-5"></div>}
+                            {isMobile ? <div class="h-2"></div>: <div class="h-5"></div>}
 
                             <div class="flex">
                                 <a href="https://p3dm.ru/" target="_blank">
@@ -82,7 +111,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                             <div class="flex justify-end">
                                 <div class="standard-dark-gray w-16 h-2 opacity-60"></div>
                             </div>
-
+                            
                         </div>
                     </div>
                 </div>

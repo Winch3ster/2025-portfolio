@@ -4,6 +4,8 @@ import leftChevron from '../icons/left-chevron.png'
 import rightChevron from '../icons/right-chevron_black.png'
 import { motion, AnimatePresence } from "framer-motion";
 import projectList from '../../projects'
+import { sliderVariants, sliderTransition } from "../../context";
+
 
 
 const screenTouchable = window.matchMedia("(any-pointer: coarse)").matches
@@ -14,42 +16,67 @@ const NUMBER_OF_VISIBLE_PROJECT_PICTURE = 3
 const ProjectDetailSection = ({currentFocusedProject,windowWithSmallHeight, isSmallScreenView }) => {
 
   const isFypProject =  currentFocusedProject.isFYP;
-  const [page, setPage] = useState(0);
+
+
+  const [[pageNumber, direction], setPageNumber] = useState([0,0]);
+
+    
+    
+  const swipeToPage = swipeDirection => {
+      setPageNumber([pageNumber + swipeDirection, swipeDirection])
+    }
+  
+
 
   if(isFypProject && isMobile){
     return (
       <div className="project-details-panel-mobile mt-2 pr-8 not-mobile-fyp">
           <p class='text-black opacity-80 mb-1 font-semibold'>{currentFocusedProject.name}</p>
 
-          {
-            page == 0 ?
-             <p >{currentFocusedProject.description}</p>  
-            :
-              <div>
-                <p >{currentFocusedProject.description2}</p>
-                <div className='font-bold mt-2'>Tech & concept</div>
-                <div className='grid grid-cols-3 grid-flow-row-dense'>
-                
-                  {currentFocusedProject.tech.map((tech) => {
-                    return(<li>{tech}</li>)
-                  })} 
-              
-                </div>
-              </div>
-              
-          }
 
-        
-          <div className='flex justify-end font-bold'>
-            { page == 0 ?
 
-              <div onClick={() => setPage(1)}>Next..</div> 
-              :
-              <div onClick={() => setPage(0)}>..Prev</div>
-            }
-         </div>
+          <div className="flex flex-col items-center ">
+            <div className="relative overflow-hidden">
 
-          
+
+
+
+            <AnimatePresence mode="popLayout" initial={false} custom={direction}>
+              <motion.div
+                key={pageNumber}
+                custom={direction}
+                variants={sliderVariants}
+                initial="incoming"
+                animate="active"
+                exit="exit"
+                transition={sliderTransition}
+              >
+                {
+                            pageNumber == 0 ?
+                            <div className={` h-44  relative`}>
+                            <p >{currentFocusedProject.description}</p>  
+                            <div  className="absolute bottom-0 right-4 simple-button cursor-pointer" onClick={() => swipeToPage(1)}>Next..</div> 
+
+                            </div>
+                            :
+                            <div className={`  h-44 relative`}>
+                                <p >{currentFocusedProject.description2}</p>
+                                <div className='font-bold mt-2'>Tech & concept</div>
+                                <div className='grid grid-cols-3 grid-flow-row-dense'>
+                                
+                                  {currentFocusedProject.tech.map((tech) => {
+                                    return(<li>{tech}</li>)
+                                  })} 
+                              
+                                </div>
+                                <div  className="absolute bottom-0 right-4 simple-button cursor-pointer" onClick={() => swipeToPage(-1)}>..Prev</div>
+
+                              </div>     
+                          }
+                </motion.div>
+              </AnimatePresence>                 
+            </div>
+          </div>
       </div>
     );
   }else{
@@ -59,36 +86,52 @@ const ProjectDetailSection = ({currentFocusedProject,windowWithSmallHeight, isSm
         <div className={`project-details-panel-mobile mt-2 pr-8`} style={isSmallScreenView ? {maxWidth: "65%"} : {maxWidth:"100%"}} >
             <p class='text-black opacity-80 mb-1 font-semibold'>{currentFocusedProject.name}</p>
   
-            {
-              page == 0 ?
-               <p >{currentFocusedProject.description}</p>  
-              :
-                <div>
-                  <p >{currentFocusedProject.description2}</p>
-                  <div className='font-bold mt-2'>Tech & concept</div>
-                  <div className='grid grid-cols-3 grid-flow-row-dense'>
-                  
-                    {currentFocusedProject.tech.map((tech) => {
-                      return(<li>{tech}</li>)
-                    })} 
-                
+
+            <div className="flex flex-col  items-center ">
+            <div className="relative overflow-hidden">
+
+
+
+
+            <AnimatePresence mode="popLayout" initial={false} custom={direction}>
+              <motion.div
+                key={pageNumber}
+                custom={direction}
+                variants={sliderVariants}
+                initial="incoming"
+                animate="active"
+                exit="exit"
+                transition={sliderTransition}
+              >
+              {
+                pageNumber == 0 ?
+                <div className={`h-40  relative p-4`}>
+                                <p >{currentFocusedProject.description}</p>  
+
+                                <div  className="absolute bottom-0 right-4 simple-button cursor-pointer" onClick={() => swipeToPage(1)}>Next..</div> 
                   </div>
-                </div>
-                
-            }
-  
-          
-            <div className='flex justify-end font-bold'>
-              { page == 0 ?
-  
-                <div onClick={() => setPage(1)}>Next..</div> 
                 :
-                <div onClick={() => setPage(0)}>..Prev</div>
+                  <div className={`h-40 relative p-4`}>
+                    <p >{currentFocusedProject.description2}</p>
+                    <div className='font-bold mt-2'>Tech & concept</div>
+                    <div className='grid grid-cols-3 grid-flow-row-dense'>
+                    
+                      {currentFocusedProject.tech.map((tech) => {
+                        return(<li>{tech}</li>)
+                      })} 
+                  
+                    </div>
+                    <div  className="absolute bottom-0 right-4 simple-button cursor-pointer" onClick={() => swipeToPage(-1)}>..Prev</div>
+
+                  </div>   
               }
-           </div>
-  
-            
-        </div>
+
+
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>     
+      </div>
       );
     }
     return (

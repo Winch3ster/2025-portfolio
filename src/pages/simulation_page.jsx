@@ -51,9 +51,11 @@ function Rig({currentActivatedPanel}) {
 
 
   useFrame(() => {
-    const xOffset = mouse.x * 0.3;
-    const yOffset =  mouse.y*0.2;
+   
+    const xOffset = mouse.x * (isTouchDevice ? 0.6: 0.3);
+    const yOffset =  mouse.y*(isTouchDevice ? 0.4: 0.2);
 
+   
     // Default camera position & lookAt target
     newPosition.set(-2.5 + xOffset, 0 + yOffset, 3.3 + xOffset);
     lookAtPosition.set(1.3, 0.6, -3.8);

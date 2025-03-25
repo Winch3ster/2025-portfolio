@@ -56,7 +56,7 @@ const LoadingPage = ({pageName}) => {
             return false;
         }
     }
-    const [showTutorial, setShowTutorial] = useState(getLocalStorgaeShowTurorial());
+    const [showTutorial, setShowTutorial] = useState(getLocalStorgaeShowTurorial() && isTouchDevice);
     const [model, setModel] = useState();
     useEffect(() => {
       

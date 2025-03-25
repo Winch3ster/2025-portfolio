@@ -1,9 +1,11 @@
+import { useState } from "react";
 import textBundle from "../../msgbundle";
 import leftChevron from '../icons/left-chevron.png'
 import profile from '../profile.png'
 
 const AboutMePanel = ({closePanelCallbackFunction}) => {
     const isMobile = window.matchMedia("(any-pointer: coarse)").matches &&  window.innerHeight < 500;
+    const [pageNumber, setPageNumber] = useState(0);
 
     return(
         <div>
@@ -39,12 +41,32 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                         <div class="-mt-10">
                             <div class="standard-dark-gray w-16 h-2 opacity-60 about-me-decor"></div>
                             <div class="h-4"></div>
+                            
+                            {pageNumber == 0 ? 
+                           
+                            <div>
 
-                            <p>{textBundle["about.me.panel.description"]}</p>
-                            <br></br>
-                            <p>{textBundle["about.me.panel.description.2"]}</p>
-                            <br></br>
-                            <p class='font-bold'>{textBundle["about.me.panel.ps"]}</p>
+                                <p>{textBundle["about.me.panel.description"]}</p>
+                                <br></br>
+                                <p>{textBundle["about.me.panel.description.2"]}</p>
+                                <br></br>
+                                <div className="flex justify-end font-bold" onClick={() => setPageNumber(1)}>Next...</div>
+                            </div>
+                            
+                            : 
+                            <div>
+                                <p>{textBundle["about.me.panel.description.3"]}</p>
+                                <br></br>
+                                <p class='font-bold'>{textBundle["about.me.panel.ps"]}</p>
+                                <div className="flex justify-end font-bold" onClick={() => setPageNumber(0)}>Prev...</div>
+                            </div>
+
+
+
+                             }
+
+
+
                             {isMobile ? <div class="h-1"></div>: <div class="h-5"></div>}
 
                             <div class="flex">

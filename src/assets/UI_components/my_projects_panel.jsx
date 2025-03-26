@@ -226,7 +226,7 @@ const MyProjectsPanel = ({closePanelCallbackFunction, isParentAnimationDone}) =>
    
               
 
-            <div class={`px-8 pt-2`}>
+            <div class={`pl-8 pr-4 pt-2`}>
                 <div class={`${isMobile ? "text-base" : "text-xl"} font-semibold`}>{textBundle["my.projects"]}</div>
 
                 {isMobile || windowWithSmallHeight ?  

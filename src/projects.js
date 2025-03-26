@@ -32,7 +32,7 @@ const projects = [
         image: fyp,
         isVisible:true, 
         isBeingFocused:false,
-        tech: ["Unity", "Blender", "C#", "Python", "Tensorflow"],
+        tech: ["Unity", "Blender", "C#", "Python", "Tensorflow", "Flask"],
     },
     {
         id:2,
@@ -87,7 +87,7 @@ const projects = [
         image: bitsey,
         isVisible:false, 
         isBeingFocused:false,
-        tech: ["Django", "Python", "Bootstrap", "Javascript"] 
+        tech: ["Django", "Python", "Bootstrap", "Javascript" , "SQL"] 
     },
     {
         id:6,

@@ -249,7 +249,7 @@ const MyProjectsPanel = ({closePanelCallbackFunction, isParentAnimationDone}) =>
 
                                 return (<motion.div
                                   key={block.id}
-                                  class={`shadow-lg rounded-md ${block.isBeingFocused ? "h-32 w-40 col-span-2" : "h-12 w-24"} mr-10`}             
+                                  class={`shadow-lg rounded-md ${block.isBeingFocused ? "h-28 w-40 col-span-2" : "h-12 w-24"} mr-10`}             
                                   style={{ backgroundImage: `url(${block.image})`, backgroundSize: "cover", backgroundPosition: "center" }}
 
                                   initial={{ x: 200, opacity: 1 }}

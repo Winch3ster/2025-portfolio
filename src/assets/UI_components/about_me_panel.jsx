@@ -51,9 +51,9 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                     <div class=" w-2/3 flex justify-center items-center">
                         <div class="-mt-10">
                             <div class="standard-dark-gray w-16 h-2 opacity-60 about-me-decor"></div>
-                            <div class="h-4"></div>
+                            <div class={isMobile ?"h-0" : "h-4"}></div>
 
-                            <div className="flex flex-col items-center ">
+                            <div className="flex flex-col bg-amber-100 ">
                             <div className="relative overflow-hidden">
                                 
                                <AnimatePresence mode="popLayout" initial={false} custom={direction}>
@@ -68,7 +68,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                                     >
                                     {pageNumber == 0 ? 
                                 
-                                    <div className={` ${isMobile ? "dynamic-height-about-me" : "h-60"}  relative p-4`}>
+                                    <div className={` ${isMobile ? "dynamic-height-about-me" : "h-60"}  relative px-4 py-2`}>
                                         <p>{textBundle["about.me.panel.description"]}</p>
                                         <br />
                                         <p>{textBundle["about.me.panel.description.2"]}</p>

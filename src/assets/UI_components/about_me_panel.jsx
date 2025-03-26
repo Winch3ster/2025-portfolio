@@ -68,7 +68,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                                     >
                                     {pageNumber == 0 ? 
                                 
-                                    <div className={` ${isMobile ? "h-44" : "h-60"}  relative p-4`}>
+                                    <div className={` ${isMobile ? "dynamic-height-about-me" : "h-60"}  relative p-4`}>
                                         <p>{textBundle["about.me.panel.description"]}</p>
                                         <br />
                                         <p>{textBundle["about.me.panel.description.2"]}</p>
@@ -82,7 +82,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                                     </div>
                                 
                                     : 
-                                    <div className={` ${isMobile ? "h-44" : "h-60"}  relative p-4`}>
+                                    <div className={` ${isMobile ? "dynamic-height-about-me" : "h-60"}  relative p-4`}>
 
                                         <p>{textBundle["about.me.panel.description.3"]}</p>
                                         <br></br>
@@ -96,7 +96,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                             </div>
                         </div>
                             
-                            {isMobile ? <div class="h-2"></div>: <div class="h-5"></div>}
+                            {isMobile ? <div class="h-1"></div>: <div class="h-5"></div>}
 
                             <div class="flex">
                                 <a href="https://p3dm.ru/" target="_blank">
@@ -107,7 +107,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                                     <div class='github-styled-btn'>{textBundle["common.github.button.text"]}</div>
                                 </a>
                             </div>
-                            <div class="h-3"></div>
+                            <div class="h-1"></div>
                             <div class="flex justify-end">
                                 <div class="standard-dark-gray w-16 h-2 opacity-60"></div>
                             </div>

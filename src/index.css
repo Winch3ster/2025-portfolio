@@ -681,6 +681,12 @@ body{
   border-radius: 5px;
 }
 
+.dynamic-height-about-me{
+  height:47vh;
+}
+.dynamic-height-fyp{
+  height: 43vh;
+}
 
 
 @media (width <= 80rem ) {

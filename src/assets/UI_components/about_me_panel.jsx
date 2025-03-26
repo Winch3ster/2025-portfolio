@@ -53,7 +53,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                             <div class="standard-dark-gray w-16 h-2 opacity-60 about-me-decor"></div>
                             <div class={isMobile ?"h-0" : "h-4"}></div>
 
-                            <div className="flex flex-col bg-amber-100 ">
+                            <div className="flex flex-col ">
                             <div className="relative overflow-hidden">
                                 
                                <AnimatePresence mode="popLayout" initial={false} custom={direction}>

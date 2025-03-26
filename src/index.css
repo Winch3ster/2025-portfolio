@@ -501,6 +501,7 @@ body{
   background-color: rgb(243, 242, 247);
   z-index: 30;
   position: absolute;
+  padding-bottom: 5px;
 }
 
 
@@ -687,6 +688,9 @@ body{
 .dynamic-height-fyp{
   height: 43vh;
 }
+.responsive-lg-text-size{
+  font-size: 12px;
+}
 
 
 @media (width <= 80rem ) {
@@ -749,7 +753,7 @@ body{
   }
   .my-project-panel-config{
     max-width: 70vw;
-    max-height: 65vh;
+    max-height: fit-content;
     right:15vw;
     top:18vh;
   }
@@ -763,5 +767,23 @@ body{
   .on-resizeble-pc-fyp{
     max-width: 65%;
   }
+
+  .dynamic-height-about-me{
+    height:48vh;
+  }
+  .dynamic-height-fyp{
+
+    height: fit-content;
+  }
+
+  .responsive-lg-text-size{
+    font-size: 18px;
+  }
+  @media (max-width: 850px) {
+    .responsive-lg-text-size{
+      font-size: 12px;
+    }
+  }
+  
 }
 

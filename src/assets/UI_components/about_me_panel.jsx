@@ -9,6 +9,7 @@ import { sliderVariants, sliderTransition } from "../../context";
 
 const AboutMePanel = ({closePanelCallbackFunction}) => {
     const isMobile = window.matchMedia("(any-pointer: coarse)").matches &&  window.innerHeight < 500;
+    const nearSquareView = window.matchMedia("(any-pointer: coarse)").matches && window.innerWidth / window.innerHeight < 1.2;
     const [[pageNumber, direction], setPageNumber] = useState([0,0]);
 
     
@@ -22,7 +23,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
         <div>
             <div class='absolute w-full h-full bg-black opacity-30 z-30'></div>
 
-            <div class={`absolute ${isMobile ? "right-8 top-10 about-me-panel-config-mobile sm:text-sm text-extra-small" : " xl:right-30 xl:top-30  lg:right-20 lg:top-20 right-10 top-10 about-me-panel-config xl:text-base text-xs" } rounded-2xl pt-5`}>
+            <div class={`absolute ${isMobile ? "right-8 top-10 about-me-panel-config-mobile sm:text-sm text-extra-small" : " xl:right-30 xl:top-30  lg:right-20 lg:top-20 right-10 top-10 about-me-panel-config xl:text-base responsive-lg-text-size" } rounded-2xl pt-5`}>
        
                 <div class='panel-close' onClick={closePanelCallbackFunction}>
                     <img class='h-4 w-4'  src={leftChevron} alt="" />

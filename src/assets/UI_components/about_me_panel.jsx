@@ -68,7 +68,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                                     >
                                     {pageNumber == 0 ? 
                                 
-                                    <div className={` ${isMobile ? "dynamic-height-about-me" : "h-60"}  relative px-4 py-2`}>
+                                    <div className={` ${isMobile ? "dynamic-height-about-me" : "h-60"}  relative px-4 pb-1 pt-3`}>
                                         <p>{textBundle["about.me.panel.description"]}</p>
                                         <br />
                                         <p>{textBundle["about.me.panel.description.2"]}</p>
@@ -82,7 +82,7 @@ const AboutMePanel = ({closePanelCallbackFunction}) => {
                                     </div>
                                 
                                     : 
-                                    <div className={` ${isMobile ? "dynamic-height-about-me" : "h-60"}  relative p-4`}>
+                                    <div className={` ${isMobile ? "dynamic-height-about-me" : "h-60"}  relative px-4 pb-1 pt-3`}>
 
                                         <p>{textBundle["about.me.panel.description.3"]}</p>
                                         <br></br>

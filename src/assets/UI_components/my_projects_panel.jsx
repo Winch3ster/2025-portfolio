@@ -35,7 +35,7 @@ const ProjectDetailSection = ({currentFocusedProject,windowWithSmallHeight, isSm
 
 
 
-          <div className="flex flex-col items-center bg-amber-300">
+          <div className="flex flex-col items-center ">
             <div className="relative overflow-hidden">
 
 
@@ -108,7 +108,7 @@ const ProjectDetailSection = ({currentFocusedProject,windowWithSmallHeight, isSm
                 <div className={`h-40  relative p-4`}>
                                 <p >{currentFocusedProject.description}</p>  
 
-                                <div  className="absolute bottom-0 right-4 simple-button cursor-pointer" onClick={() => swipeToPage(1)}>Next..</div> 
+                                <div  className="absolute bottom-0 right-1 simple-button cursor-pointer" onClick={() => swipeToPage(1)}>Next..</div> 
                   </div>
                 :
                   <div className={`h-40 relative p-4`}>
@@ -121,7 +121,7 @@ const ProjectDetailSection = ({currentFocusedProject,windowWithSmallHeight, isSm
                       })} 
                   
                     </div>
-                    <div  className="absolute bottom-0 right-4 simple-button cursor-pointer" onClick={() => swipeToPage(-1)}>..Prev</div>
+                    <div  className="absolute bottom-0 right-1 simple-button cursor-pointer" onClick={() => swipeToPage(-1)}>..Prev</div>
 
                   </div>   
               }

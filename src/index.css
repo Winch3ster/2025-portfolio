@@ -689,7 +689,7 @@ body{
   height: 43vh;
 }
 .responsive-lg-text-size{
-  font-size: 12px;
+  font-size: 16px;
 }
 
 
@@ -701,8 +701,9 @@ body{
   .my-project-panel-config{
     max-width: 95vw; 
   }
-  
-
+  .responsive-lg-text-size{
+    font-size: 14px;
+  }
 }
 
 

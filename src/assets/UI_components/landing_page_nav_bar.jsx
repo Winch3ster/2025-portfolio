@@ -23,7 +23,7 @@ const LandingPageNavigationBar = () => {
                     <img className="individual-icon mr-5" src={githubLogo} alt="" />
                 </a>
 
-                <a href="https://drive.google.com/file/d/1D18mXHaJTAsO_I-Ak3qlVCT95hBXzeI9/view?usp=sharing"  target="_blank">
+                <a href="https://drive.google.com/file/d/1LU95B1vvXLiAMxScsobwsCa0-FIt3nt9/view?usp=sharing"  target="_blank">
                     <div class="standard-button text-white bg-transparent border-2 border-white focus:outline-none  hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm md:px-6 px-4 py-1 cursor-pointer">{textBundle["common.resume"]}</div>                   
                 </a>
             </div>
